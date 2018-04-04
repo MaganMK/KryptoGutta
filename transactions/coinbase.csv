@@ -1,0 +1,10 @@
+Transactions,,,,,,,,,,,,,,,,,,,,,
+User,sindreaubert@gmail.com,592684de2205ad0a29e923c3,,,,,,,,,,,,,,,,,,,
+Account,ETH Wallet,592684de2205ad0a29e923da,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+Timestamp,Balance,Amount,Currency,To,Notes,Instantly Exchanged,Transfer Total,Transfer Total Currency,Transfer Fee,Transfer Fee Currency,Transfer Payment Method,Transfer ID,Order Price,Order Currency,Order BTC,Order Tracking Code,Order Custom Parameter,Order Paid Out,Recurring Payment ID,Coinbase ID (visit https://www.coinbase.com/transactions/[ID] in your browser),Bitcoin Hash (visit https://www.coinbase.com/tx/[HASH] in your browser for more info)
+05/06/2017 10:02,0.22623156,0.22623156,ETH,592684de2205ad0a29e923da,Bought 0.22623156 ETH for €52.00 EUR.,false,52,EUR,2,EUR,Visa debit ********0040,59358e83ae4b985bafce2a36,,,,,,,,59358e8b79b72ea963dad41f,
+09/06/2017 09:47,0.4288481,0.20261654,ETH,592684de2205ad0a29e923da,Bought 0.20261654 ETH for €52.00 EUR.,false,52,EUR,2,EUR,Visa debit ********0040,593ad13b7083c90162f6a9c9,,,,,,,,593ad13d05fcbc08f436bd7a,
+11/07/2017 01:30,0.55095205,0.12210395,ETH,592684de2205ad0a29e923da,Bought 0.12210395 ETH for €21.49 EUR.,false,21.49,EUR,1.49,EUR,Visa debit ********0040,59648ca76c652d00911b1ab4,,,,,,,,59648cae27aee502ed1cc495,
+23/08/2017 10:17,1.13322101,0.58226896,ETH,592684de2205ad0a29e923da,Bought 0.58226896 ETH for €166.38 EUR.,false,166.38,EUR,6.38,EUR,Visa debit ********0040,599db88dccc84a02cc2d54e9,,,,,,,,599db8900f8b3201e2e23b2d,
+23/08/2017 10:21,0.51904101,-0.61418,ETH,0x4db6282b382ad31677a5410205480d7bbbb46d3c,,false,,,,,,,,,,,,,,599db9b405fa0100b5f2052b,4116a375d2765115906c22805ee174e4a1d727d8adbc9d5d1e6cfa0855c60418
