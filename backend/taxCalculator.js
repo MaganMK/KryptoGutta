@@ -90,7 +90,3 @@ function groupByCurrency() {
 
 var groups = groupByCurrency();
 console.log(groups);
-
-
-
-
