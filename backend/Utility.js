@@ -1,35 +1,26 @@
-
 import {Transaction} from "./Transaction.js";
 import {CurrencyGroup} from "./CurrencyGroup.js";
 
-let res = [];
 export function readFile()
 {
-
+    var res = [];
     $.get('../transactions/bittrex.csv', function(data)
     {
-        let result = [];
         let lines = String(data).split("\n");
         for (let i = 1; i < lines.length; i++)
         {
             let line = lines[i];
             let lineSplit = line.split(",");
             let transaction = new Transaction(lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[6], lineSplit[8]);
-            result.push(transaction);
             res.push(transaction);
         }
-        return result;
+        return groupByCurrency(res);
     });
-
-    return [];
 }
 
-export function groupByCurrency(){
-    readFile('../transactions/bittrex.csv');
-    let sell = {};
-    let buy = {};
-    console.log(res); // Denne er riktig
-    console.log(res.length); // Men length gir fortsatt 0.... HVA FAEN
+export function groupByCurrency(res){
+    var sell = {};
+    var buy = {};
     for (let i = 0; i < res.length; i++) {
         if(!(res[i].sellCurrency in sell)) {
             sell[res[i].sellCurrency] = [];
@@ -41,27 +32,29 @@ export function groupByCurrency(){
         buy[res[i].buyCurrency].push(res[i]);
     }
 
-    console.log(sell.keys);
-    let groups = {};
+    var groups = {};
 
-    for (let i = 0; i < sell.length; i++) {
-        if(!(sell[i] in groups)) {
-            groups[i] = [];
-        }
-        let group = new CurrencyGroup(sell[i]);
-        group.sells = sell[i];
-        groups[sell[i]].push(group);
-    }
+    Object.keys(sell).forEach(function(key,index) {
+        // key: the name of the object key
+        // index: the ordinal position of the key within the object
+        if(!(sell[key] in Object.keys(groups))) {
+                    groups[key] = [];
+                }
+                let group = new CurrencyGroup(key);
+                console.log(group);
+                group.sales = sell[key];
+                groups[key].push(group);
+    });
 
-    for (let i = 0; i < buy.length; i++) {
-        if(buy[i] in groups) {
-            groups[buy[i]].buys = buy[i];
-        }
-        else {
+    Object.keys(buy).forEach(function(key,index) {
+            if(!(buy[key] in Object.keys(groups)))
+            {
+                groups[key] = [];
+            }
             let group = new CurrencyGroup(key);
-            group.buys = buy[i];
-            groups[buy[i]].push(group);
-        }
-    }
+            group.buys = buy[key];
+            groups[key].push(group);
+        });
+    console.log(groups);
     return groups;
 }

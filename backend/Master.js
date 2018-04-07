@@ -1,6 +1,3 @@
+import {readFile} from "./Utility.js";
 
-import {groupByCurrency} from "./Utility.js";
-
-
-let groups = groupByCurrency();
-console.log(groups);
+let groups = readFile();
