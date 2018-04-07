@@ -16,7 +16,8 @@ export function readFile()
         }
         var groups = groupByCurrency(res);
         console.log(groups); //Riktig her og
-
+        document.getElementById("test").innerHTML = groups["BTC"].name;
+        //funker å skrive til dokument, så kan evt bruke denne som master..
         return groups;
     });
 }
