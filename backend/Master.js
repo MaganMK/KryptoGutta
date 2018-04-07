@@ -1,3 +1,4 @@
 import {readFile} from "./Utility.js";
 
-let groups = readFile();
+var groups = readFile();
+groups["BTC"];
