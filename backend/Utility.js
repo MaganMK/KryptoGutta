@@ -16,6 +16,7 @@ export function readFile()
         }
         var groups = groupByCurrency(res);
         console.log(groups); //Riktig her og
+
         return groups;
     });
 }
@@ -36,7 +37,7 @@ export function groupByCurrency(res){
 
     var groups = {};
 
-    Object.keys(sell).forEach(function(key,index) {
+    Object.keys(sell).forEach(function(key) {
         let group = new CurrencyGroup(key);
         group.sales = sell[key];
         groups[key] = group;
@@ -44,7 +45,7 @@ export function groupByCurrency(res){
 
     delete groups["undefined"];
 
-    Object.keys(buy).forEach(function(key,index) {
+    Object.keys(buy).forEach(function(key) {
             if(key in groups)
             {
                 var group = groups[key];
@@ -57,6 +58,12 @@ export function groupByCurrency(res){
         });
 
     delete groups["undefined"];
+
     console.log(groups); //Alt er riktig gruppert her (tror jeg) men i master.js blir den undefined
     return groups;
 }
+
+
+//var g = readFile();
+//console.log(g);
+//UNDEFINED ER OG :(
