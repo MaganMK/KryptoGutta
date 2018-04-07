@@ -22,6 +22,25 @@ export function readFile()
     });
 }
 
+export function readFile2(file)
+{
+    var res = [];
+        let lines = String(file).split("\n");
+        for (let i = 1; i < lines.length; i++)
+        {
+            let line = lines[i];
+            let lineSplit = line.split(",");
+            let transaction = new Transaction(lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[6], lineSplit[8]);
+            res.push(transaction);
+        }
+        var groups = groupByCurrency(res);
+        console.log(groups); //Riktig her og
+        document.getElementById("test").innerHTML = groups["BTC"].name;
+        //funker å skrive til dokument, så kan evt bruke denne som master..
+        return groups;
+    ;
+}
+
 export function groupByCurrency(res){
     var sell = {};
     var buy = {};
