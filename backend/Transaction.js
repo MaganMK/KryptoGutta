@@ -43,15 +43,16 @@ function bittrexTransaction(data)
 function binanceTransaction(data)
 {
     var tx = new Transaction(data[1], data[2], data[4], data[3], data[0]);
+    var i = tx.exchange.length == 6 ? 3 : 4; //Noen valutaer har 4 tegn, feks IOTA
     if (tx.type == "BUY")
     {
-        tx.sellCurrency = tx.exchange.substring(3);
-        tx.buyCurrency = tx.exchange.substring(0,3);
+        tx.sellCurrency = tx.exchange.substring(i);
+        tx.buyCurrency = tx.exchange.substring(0,i);
     }
     else
     {
-        tx.buyCurrency = tx.exchange.substring(3);
-        tx.sellCurrency = tx.exchange.substring(0,3);
+        tx.buyCurrency = tx.exchange.substring(i);
+        tx.sellCurrency = tx.exchange.substring(0,i);
     }
     return tx;
 }

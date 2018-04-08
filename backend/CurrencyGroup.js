@@ -32,8 +32,6 @@ export function groupByCurrency(transactions){
         groups[key] = group;
     });
 
-    delete groups["undefined"];
-
     Object.keys(buy).forEach(function(key) {
             if(key in groups)
             {
@@ -46,7 +44,30 @@ export function groupByCurrency(transactions){
             groups[key] = group;
         });
 
+    //Fjerner alle rare undefined som kommer med
     delete groups["undefined"];
+    delete groups["unde"];
+    delete groups["fined"];
 
     return groups;
+}
+
+// Metode for å forene to currencyGroups mtp lagring av andre exchanges og kombinering
+export function uniteCurrencyGroups(mainGroup, newGroup) {
+    if (typeof mainGroup == "undefined")
+    {
+        return newGroup;
+    }
+    for (let key in newGroup)
+    {
+        if(key in Object.keys(mainGroup))
+                {
+                    mainGroup[key].buys.concat(newGroup[key].buys);
+                    mainGroup[key].sales.concat(newGroup[key].sales);
+                }
+                else {
+                    mainGroup[key] = newGroup[key];
+                }
+    }
+    return mainGroup;
 }

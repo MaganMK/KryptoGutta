@@ -3,7 +3,13 @@
     background-color: gray;
 }
 
-.centered {
-    float: none;
-    margin: 0 auto;
+.centered-text {
+    text-align: center;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+
+}
+

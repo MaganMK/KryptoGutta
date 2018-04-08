@@ -1,22 +1,41 @@
 import {readFormFile} from "./Utility.js";
+import {uniteCurrencyGroups} from "./CurrencyGroup.js";
+
+var saveCount = 0;
 
 //Handterer filinput i form
-function handleFileInput()
+function handleFileInput(event)
 {
-    var file = document.getElementById('file');
-    var content = "";
-
+    var exchange = event.target.id;
+    var file = document.getElementById(exchange);
     if(file.files.length)
     {
         var reader = new FileReader();
 
         reader.onload = function(e)
         {
-            var content = e.target.result;
-            calculateIncome(readFormFile(content));
+
+            let content = e.target.result;
+            var savedGroups;
+            for (let i = 0; i < saveCount; i++) {
+                savedGroups = uniteCurrencyGroups(savedGroups,loadCurrencyGroup(i));
+            }
+            var newGroup = readFormFile(exchange, content);
+            var allGroups = (saveCount == 0 ? newGroup : uniteCurrencyGroups(savedGroups, newGroup));
+            saveCurrencyGroup(newGroup);
+            console.log(allGroups);
         };
         reader.readAsBinaryString(file.files[0]);
     }
+}
+
+function saveCurrencyGroup(currencyGroup)
+{
+    sessionStorage.setItem(saveCount++, JSON.stringify(currencyGroup));
+}
+
+function loadCurrencyGroup(number) {
+    return JSON.parse(sessionStorage.getItem(number));
 }
 
 // Kalkulerer gevinst/tap for alle currencygruppene
@@ -39,5 +58,6 @@ function setBalance(currencyGroup) {
     //Sett currencyGroups kjøp vs salg balanse
 }
 
-document.getElementById("file").addEventListener("change", handleFileInput, false);
-
+document.getElementById("bittrex").addEventListener("change", handleFileInput, false);
+document.getElementById("binance").addEventListener("change", handleFileInput, false);
+document.getElementById("coinbase").addEventListener("change", handleFileInput, false);

@@ -22,15 +22,16 @@ export function readFile()
 }
 
 // Leser fil fra form og returnerer gruppering
-export function readFormFile(file)
+export function readFormFile(exchange, file)
 {
     var result = [];
     let lines = String(file).split("\n");
-    for (let i = 1; i < lines.length; i++)
+    let skippedLines = (exchange == "coinbase" ? 5 : 1);
+    for (let i = skippedLines; i < lines.length; i++)
     {
         let line = lines[i];
         let lineSplit = line.split(",");
-        let transaction = createTransaction("bittrex", lineSplit);
+        let transaction = createTransaction(exchange, lineSplit);
         result.push(transaction);
     }
     return groupByCurrency(result);
