@@ -1,9 +1,11 @@
 import {Transaction} from "./Transaction.js";
 import {CurrencyGroup} from "./CurrencyGroup.js";
+import {groupByCurrency} from "./CurrencyGroup.js";
 
+// Leser fil fra lokal mappe og returnerer gruppering
 export function readFile()
 {
-    var res = [];
+    var result = [];
     $.get('../transactions/bittrex.csv', function(data)
     {
         let lines = String(data).split("\n");
@@ -11,79 +13,26 @@ export function readFile()
         {
             let line = lines[i];
             let lineSplit = line.split(",");
+            //I transaction kan vi lage en metode som sjekker hvilken exchange den skal lage transaction fra
             let transaction = new Transaction(lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[6], lineSplit[8]);
-            res.push(transaction);
+            result.push(transaction);
         }
-        var groups = groupByCurrency(res);
-        console.log(groups); //Riktig her og
-        document.getElementById("test").innerHTML = groups["BTC"].name;
-        //funker å skrive til dokument, så kan evt bruke denne som master..
-        return groups;
+        return groupByCurrency(result);
     });
 }
 
-export function readFile2(file)
+// Leser fil fra form og returnerer gruppering
+export function readFormFile(file)
 {
-    var res = [];
+    var result = [];
         let lines = String(file).split("\n");
         for (let i = 1; i < lines.length; i++)
         {
             let line = lines[i];
             let lineSplit = line.split(",");
             let transaction = new Transaction(lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[6], lineSplit[8]);
-            res.push(transaction);
+            result.push(transaction);
         }
-        var groups = groupByCurrency(res);
-        console.log(groups); //Riktig her og
-        document.getElementById("test").innerHTML = groups["BTC"].name;
-        //funker å skrive til dokument, så kan evt bruke denne som master..
-        return groups;
+        return groupByCurrency(result);
     ;
 }
-
-export function groupByCurrency(res){
-    var sell = {};
-    var buy = {};
-    for (let i = 0; i < res.length; i++) {
-        if(!(res[i].sellCurrency in sell)) {
-            sell[res[i].sellCurrency] = [];
-        }
-        sell[res[i].sellCurrency].push(res[i]);
-        if(!(res[i].buyCurrency in buy)) {
-            buy[res[i].buyCurrency] = [];
-        }
-        buy[res[i].buyCurrency].push(res[i]);
-    }
-
-    var groups = {};
-
-    Object.keys(sell).forEach(function(key) {
-        let group = new CurrencyGroup(key);
-        group.sales = sell[key];
-        groups[key] = group;
-    });
-
-    delete groups["undefined"];
-
-    Object.keys(buy).forEach(function(key) {
-            if(key in groups)
-            {
-                var group = groups[key];
-            }
-            else {
-                var group = new CurrencyGroup(key);
-            }
-            group.buys = buy[key];
-            groups[key] = group;
-        });
-
-    delete groups["undefined"];
-
-    console.log(groups); //Alt er riktig gruppert her (tror jeg) men i master.js blir den undefined
-    return groups;
-}
-
-
-//var g = readFile();
-//console.log(g);
-//UNDEFINED ER OG :(
