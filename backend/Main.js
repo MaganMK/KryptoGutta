@@ -25,7 +25,7 @@ function calculateIncome(currencyGroups)
     var income = 0;
 
     console.log(currencyGroups);
-    
+
     for (var group in currencyGroups)
     {
         //console.log(currencyGroups[group]);

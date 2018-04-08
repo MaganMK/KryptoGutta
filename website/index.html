@@ -3,25 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Kryptokalkulator</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Alle scripts -->
     <script src = "../backend/Utility.js" type="module"></script>
     <script src = "../backend/Transaction.js" type="module"></script>
     <script src = "../backend/CurrencyGroup.js" type="module"></script>
     <script src = "../backend/Main.js" type="module"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
-        <div>
-            <label for="file">Choose file to upload</label>
+<div class="row">
+    <div id = "header" class="col">
+        <h1>Kryptokalkulator</h1>
+    </div>
+</div>
+<form method="post" enctype="multipart/form-data">
+    <div class = "row">
+        <div class = "col">
+            <label for="file">Bittrex: </label>
             <input type="file" id="file" name="file" multiple>
         </div>
-        <div>
+        <div class = "col">
+            <label for="binance">Binance</label>
+            <input type="file" id="binance" name="file" multiple>
+        </div>
+        <div class = "col">
+            <label for="coinbase">Coinbase</label>
+            <input type="file" id="coinbase" name="file" multiple>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "col centered">
             <button id = "submit">Submit</button>
         </div>
-    </form>
-    <div>
-        <h3 id = "income">Estimert inntekt: </h3>
-        <p id = "test"></p>
     </div>
+    <div class = "row">
+        <div class = "col centered"><h3 id = "income">Estimert inntekt: </h3>
+            <p id = "test"></p>
+        </div>
+    </div>
+</form>
 </body>
 </html>
