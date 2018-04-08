@@ -19,15 +19,16 @@ function handleFileInput()
     }
 }
 
-
 // Kalkulerer gevinst/tap for alle currencygruppene
 function calculateIncome(currencyGroups)
 {
     var income = 0;
 
+    console.log(currencyGroups);
+    
     for (var group in currencyGroups)
     {
-        console.log(currencyGroups[group]);
+        //console.log(currencyGroups[group]);
         //currencyGroups[group] gir et currencyGroupObject
         // setBalance(currencyGroups[group];
     }
