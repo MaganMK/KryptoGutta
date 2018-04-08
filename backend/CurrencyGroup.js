@@ -60,10 +60,10 @@ export function uniteCurrencyGroups(mainGroup, newGroup) {
     }
     for (let key in newGroup)
     {
-        if(key in Object.keys(mainGroup))
+        if(key in mainGroup)
                 {
-                    mainGroup[key].buys.concat(newGroup[key].buys);
-                    mainGroup[key].sales.concat(newGroup[key].sales);
+                    mainGroup[key].buys = mainGroup[key].buys.concat(newGroup[key].buys);
+                    mainGroup[key].sales = mainGroup[key].sales.concat(newGroup[key].sales);
                 }
                 else {
                     mainGroup[key] = newGroup[key];

@@ -14,19 +14,33 @@ function handleFileInput(event)
 
         reader.onload = function(e)
         {
-
             let content = e.target.result;
-            var savedGroups;
-            for (let i = 0; i < saveCount; i++) {
-                savedGroups = uniteCurrencyGroups(savedGroups,loadCurrencyGroup(i));
-            }
-            var newGroup = readFormFile(exchange, content);
-            var allGroups = (saveCount == 0 ? newGroup : uniteCurrencyGroups(savedGroups, newGroup));
-            saveCurrencyGroup(newGroup);
-            console.log(allGroups);
+            var allGroups = getAllGroups(exchange, content);
         };
         reader.readAsBinaryString(file.files[0]);
     }
+}
+
+// Lagrer den siste leste gruppen og setter den sammen med tidligere lagrene grupper
+function getAllGroups(exchange, content)
+{
+    var savedGroups;
+    for (let i = 0; i < saveCount; i++) {
+        savedGroups = uniteCurrencyGroups(savedGroups,loadCurrencyGroup(i));
+    }
+    var newGroup = readFormFile(exchange, content);
+    saveCurrencyGroup(newGroup);
+    return (saveCount == 1 ? newGroup : uniteCurrencyGroups(savedGroups, newGroup));
+}
+
+//Returnerer alle grupper som er lagret, feks brukes til utregning når man trykker på knappen
+function getStoredGroups() {
+    var groups;
+    for (let i = 0; i < saveCount; i++) {
+            groups = uniteCurrencyGroups(groups,loadCurrencyGroup(i));
+        }
+    console.log(groups);
+    return groups;
 }
 
 function saveCurrencyGroup(currencyGroup)
@@ -61,3 +75,4 @@ function setBalance(currencyGroup) {
 document.getElementById("bittrex").addEventListener("change", handleFileInput, false);
 document.getElementById("binance").addEventListener("change", handleFileInput, false);
 document.getElementById("coinbase").addEventListener("change", handleFileInput, false);
+document.getElementById("submit").addEventListener("click", getStoredGroups, false);
