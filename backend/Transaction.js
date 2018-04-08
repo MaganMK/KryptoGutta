@@ -1,4 +1,5 @@
-//Merk at datoer er ulike for ulike markeder
+// Datoer må antageligvis justeres, for binance blir månedene en månede senere enn for de andre? annet format
+// Date blir også null på noen for coinbase
 
 export class Transaction {
     constructor(exchange, type, quantity, price, closed) {
@@ -9,6 +10,7 @@ export class Transaction {
         this.sellCurrency = "";
         this.buyCurrency = "";
         this.type = type;
+        this.date = new Date();
     }
 }
 
@@ -20,11 +22,12 @@ export function createTransaction(exchange, data)
 }
 
 //OrderUuid,Exchange,Type,Quantity,Limit,CommissionPaid,Price,Opened,Closed
-//8a9bf807-f899-4c07-95b8-9d312ef1e192,BTC-ADA,LIMIT_SELL,331,0.00006166,0.00005109,0.02043925,01/08/2018 08:35,01/08/2018 08:35
+//8a9bf807-f899-4c07-95b8-9d312ef1e192,BTC-ADA,LIMIT_SELL,331,0.00006166,0.00005109,0.02043925,01/08/2018 08:35,
 function bittrexTransaction(data)
 {
     var tx = new Transaction(data[1], data[2], data[3], data[6], data[8]);
     tx.exchange = String(tx.exchange).split("-");
+    tx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed.substring(0,10)) : new Date()); //feks 01/08/2018 08:35
     if (tx.type == "LIMIT_BUY")
             {
                 tx.sellCurrency = String(tx.exchange[0]);
@@ -43,6 +46,7 @@ function bittrexTransaction(data)
 function binanceTransaction(data)
 {
     var tx = new Transaction(data[1], data[2], data[4], data[3], data[0]);
+    tx.date = new Date(tx.closed.substring(0,10)); // Usikker på om denne daten funker i alle browsere
     var i = tx.exchange.length == 6 ? 3 : 4; //Noen valutaer har 4 tegn, feks IOTA
     if (tx.type == "BUY")
     {
@@ -64,6 +68,7 @@ function coinbaseTransaction(data)
 {
     //data[5] er notes, feks: Bought 0.22623156 ETH for €52.00 EUR
     var tx = new Transaction(data[3], data[5], data[2], data[7], data[0]);
+    tx.date = new Date(tx.closed.substring(0,10));
     if (tx.type.substring(0,6) == "Bought")
     {
         tx.sellCurrency = "EUR"; //Litt rart å selge euro?
