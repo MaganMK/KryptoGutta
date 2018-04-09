@@ -1,5 +1,8 @@
+
+
 // Datoer må antageligvis justeres, for binance blir månedene en månede senere enn for de andre? annet format
 // Date blir også null på noen for coinbase
+
 
 export class Transaction {
     constructor(exchange, type, quantity, price, closed) {
@@ -11,7 +14,10 @@ export class Transaction {
         this.buyCurrency = "";
         this.type = type;
         this.date = new Date();
+        this.value = 0;
+
     }
+
 }
 
 export function createTransaction(exchange, data)
@@ -38,6 +44,7 @@ function bittrexTransaction(data)
                 tx.sellCurrency = String(tx.exchange[1]);
                 tx.buyCurrency = String(tx.exchange[0]);
             }
+            tx.addValue()
     return tx;
 }
 

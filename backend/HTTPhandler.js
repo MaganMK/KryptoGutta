@@ -1,11 +1,12 @@
 // Returnerer prisen for en enhet av fromCurrency i toCurrency på angitt dato
 // Funker kanskje bare med usd
-function getPrice(date, fromCurrency, toCurrency)
+export function getPrice(date,quantity, fromCurrency, toCurrency)
 {
+    console.log("HIT");
     //Usikker på om getTime gir riktig timestamp
     let url = "https://min-api.cryptocompare.com/data/pricehistorical?fsym="
     + fromCurrency + "&tsyms=" + toCurrency + "&ts=" + date.getTime();
-    var obj;
+    let obj;
     jQuery.when(
         jQuery.getJSON(url)
     ).done( function(json) {
