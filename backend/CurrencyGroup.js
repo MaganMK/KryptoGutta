@@ -1,5 +1,4 @@
-
-import {getPrice} from "./HTTPhandler";
+import {getPrice} from "./HTTPhandler.js";
 
 
 //Klasse for å hver enkelt currency og hver kjøp og salg gjort med den
@@ -12,19 +11,24 @@ export class CurrencyGroup {
         this.balance = 0;
     }
 
-    updateValues()
-    {
-        for (sale in sales)
-        {
-            sale.value = getPrice(sale.date, sale.quantity, sale.sellCurrency, "USD");
-        }
+}
 
-        for (buy in buys)
+function updateValues(groups)
+    {
+        for(let key in groups)
         {
-            buy.value = getPrice(buy.date, buy.quantity, buy.buyCurrency, "USD");
+            let group = groups[key];
+            for (let sale in group.sales)
+            {
+                sale.value = getPrice(sale.date, sale.quantity, sale.sellCurrency, "USD");
+            }
+            
+            for (let buy in group.buys)
+            {
+                buy.value = getPrice(buy.date, buy.quantity, buy.buyCurrency, "USD");
+            }
         }
     }
-}
 
 // Tar inn en liste med transaksjoner og returnerer objekt sortert på currencies
 export function groupByCurrency(transactions){
@@ -66,10 +70,8 @@ export function groupByCurrency(transactions){
     delete groups["unde"];
     delete groups["fined"];
 
-    for (group in groups)
-    {
-        group.updateValues();
-    }
+    updateValues(groups);
+
     return groups;
 }
 

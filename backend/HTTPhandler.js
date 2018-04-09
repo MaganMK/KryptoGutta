@@ -13,6 +13,7 @@ export function getPrice(date,quantity, fromCurrency, toCurrency)
         callback(json);
     });
     obj = loadJSON();
+    console.log(obj);
     return obj[fromCurrency][toCurrency];
 }
 
