@@ -1,9 +1,3 @@
-
-
-// Datoer må antageligvis justeres, for binance blir månedene en månede senere enn for de andre? annet format
-// Date blir også null på noen for coinbase
-
-
 export class Transaction {
     constructor(exchange, type, quantity, price, closed) {
         this.exchange = String(exchange);
@@ -31,8 +25,6 @@ function bittrexTransaction(data)
 {
     var tx = new Transaction(data[1], data[2], data[3], data[6], data[8]);
     tx.exchange = String(tx.exchange).split("-");
-    //tx.closed = (tx.closed.substring(0,1) == "0" ? tx.closed : "0" + tx.closed);
-    //tx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed.substring(6,10), tx.closed.substring(0,2), tx.closed.substring(3,5)) : new Date()); //feks 01/08/2018 08:35
     tx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed) : new Date());
     if (tx.type == "LIMIT_BUY")
             {
@@ -44,8 +36,6 @@ function bittrexTransaction(data)
                 tx.sellCurrency = String(tx.exchange[1]);
                 tx.buyCurrency = String(tx.exchange[0]);
             }
-    console.log(tx);
-    console.log(tx.date);
     return tx;
 }
 
@@ -79,12 +69,12 @@ function coinbaseTransaction(data)
     tx.date = new Date(tx.closed.substring(0,10));
     if (tx.type.substring(0,6) == "Bought")
     {
-        tx.sellCurrency = "EUR"; //Litt rart å selge euro?
+        tx.sellCurrency = "EUR";
         tx.buyCurrency = tx.exchange;
     }
     else
     {
-        tx.buyCurrency = "EUR"; //Litt rart å selge euro?
+        tx.buyCurrency = "EUR";
         tx.sellCurrency = tx.exchange;
     }
     return tx;
