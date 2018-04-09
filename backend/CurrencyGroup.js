@@ -16,10 +16,14 @@ export class CurrencyGroup {
 function updateValues(groups)
     {
         for(let key in groups)
+
         {
             let group = groups[key];
-            for (let sale in group.sales)
+            console.log(group.sales);
+            for (let key in group.sales)
             {
+                let sale = group.sales[key]
+                console.log("sale" + sale);
                 sale.value = getPrice(sale.date, sale.quantity, sale.sellCurrency, "USD");
             }
             

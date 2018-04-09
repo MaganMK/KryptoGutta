@@ -2,6 +2,10 @@
 // Funker kanskje bare med usd
 export function getPrice(date,quantity, fromCurrency, toCurrency)
 {
+    if(typeof date == "undefined") {
+    console.log("hei");
+    return;
+    }
     console.log("HIT");
     //Usikker på om getTime gir riktig timestamp
     let url = "https://min-api.cryptocompare.com/data/pricehistorical?fsym="

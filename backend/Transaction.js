@@ -33,7 +33,7 @@ function bittrexTransaction(data)
 {
     var tx = new Transaction(data[1], data[2], data[3], data[6], data[8]);
     tx.exchange = String(tx.exchange).split("-");
-    tx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed.substring(0,10)) : new Date()); //feks 01/08/2018 08:35
+    tx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed.substring(6,10), tx.closed.substring(0,2), tx.closed.substring(3,5)) : new Date()); //feks 01/08/2018 08:35
     if (tx.type == "LIMIT_BUY")
             {
                 tx.sellCurrency = String(tx.exchange[0]);
@@ -44,7 +44,7 @@ function bittrexTransaction(data)
                 tx.sellCurrency = String(tx.exchange[1]);
                 tx.buyCurrency = String(tx.exchange[0]);
             }
-            tx.addValue()
+    console.log(tx.date);
     return tx;
 }
 
