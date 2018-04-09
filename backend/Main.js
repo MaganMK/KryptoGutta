@@ -39,7 +39,6 @@ function getStoredGroups() {
     for (let i = 0; i < saveCount; i++) {
             groups = uniteCurrencyGroups(groups,loadCurrencyGroup(i));
         }
-    console.log(groups);
     return groups;
 }
 
