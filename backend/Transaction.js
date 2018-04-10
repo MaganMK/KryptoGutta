@@ -12,6 +12,7 @@ export class Transaction {
     }
 }
 
+//Lager transaksjon utifra hvilken exchange den kommer fra
 export function createTransaction(exchange, data)
 {
     if (exchange == "bittrex") { return bittrexTransaction(data); }
@@ -24,6 +25,7 @@ export function createTransactionFromTransaction(tx){
     return copyBittrexTransaction(tx);
 }
 
+//Kopierer en bittrextransaksjon, må finnes en lettere måte å gjøre dette på
 function copyBittrexTransaction(tx)
 {
     var ctx = new Transaction(tx.exchange, tx.type, tx.quantity, tx.price, tx.closed);

@@ -13,7 +13,7 @@ export class CurrencyGroup {
 }
 
 //Oppdaterer value-feltet til transaksjoner med verdien per enhet på den angitte datoen
-//cryptocompare.com - må kjøre sleep i en viss tid for å ikke overgå rate limit
+//cryptocompare.com - rate limit på 15 historie-requests per sekund, derfor sleep 1100ms
 function updateValues(groups)
     {
         var count = 0;
@@ -27,7 +27,7 @@ function updateValues(groups)
                 count++
                 if (count % 15 == 0)
                 {
-                    sleep(1000);
+                    sleep(1100);
                 }
             }
             
