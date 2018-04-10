@@ -19,6 +19,11 @@ export function createTransaction(exchange, data)
     if (exchange == "coinbase") { return coinbaseTransaction(data); }
 }
 
+//Metode for å kopiere transaksjonsobjekter
+export function createTransactionFromTransaction(tx){
+    return new Transaction(tx.exchange, tx.type, tx.quantity, tx.price, tx.closed);
+}
+
 //OrderUuid,Exchange,Type,Quantity,Limit,CommissionPaid,Price,Opened,Closed
 //8a9bf807-f899-4c07-95b8-9d312ef1e192,BTC-ADA,LIMIT_SELL,331,0.00006166,0.00005109,0.02043925,01/08/2018 08:35,
 function bittrexTransaction(data)

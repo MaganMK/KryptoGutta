@@ -74,4 +74,5 @@ function setBalance(currencyGroup) {
 document.getElementById("bittrex").addEventListener("change", handleFileInput, false);
 document.getElementById("binance").addEventListener("change", handleFileInput, false);
 document.getElementById("coinbase").addEventListener("change", handleFileInput, false);
+
 document.getElementById("submit").addEventListener("click", getStoredGroups, false);
