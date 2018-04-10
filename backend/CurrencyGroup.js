@@ -23,7 +23,7 @@ function updateValues(groups)
             for (let key in group.sales)
             {
                 let sale = group.sales[key]
-                setValue(sale, sale.date, majorKey, "NOK");
+                setValue(sale, "USD");
                 count++
                 if (count % 15 == 0)
                 {
@@ -34,7 +34,7 @@ function updateValues(groups)
             for (let key in group.buys)
             {
                 let buy = group.buys[key];
-                setValue(buy, buy.date, majorKey, "NOK");
+                setValue(buy, "USD");
                 count++;
                 if (count % 15 == 0)
                 {
@@ -50,20 +50,21 @@ export function groupByCurrency(transactions){
     var buy = {};
     for (let i = 0; i < transactions.length; i++)
     {
-        //Her blir en og samme transaction lagt inn i to forskjellige currencies, det må endres
+        let tx1 = transactions[i];
+        let tx2 = jQuery.extend(true, {}, tx1); //Deep copy for å lage to ulike transaksjoner
         if(!(transactions[i].sellCurrency in sell))
         {
             sell[transactions[i].sellCurrency] = [];
         }
-        sell[transactions[i].sellCurrency].push(createTransactionFromTransaction(transactions[i]));
-        //sell[transactions[i].sellCurrency].push(transactions[i]);
+        //sell[transactions[i].sellCurrency].push(createTransactionFromTransaction(transactions[i]));
+        sell[transactions[i].sellCurrency].push(tx1);
 
         if(!(transactions[i].buyCurrency in buy))
         {
             buy[transactions[i].buyCurrency] = [];
         }
-        buy[transactions[i].buyCurrency].push(createTransactionFromTransaction(transactions[i]));
-        //buy[transactions[i].buyCurrency].push(transactions[i]);
+        //buy[transactions[i].buyCurrency].push(createTransactionFromTransaction(transactions[i]));
+        buy[transactions[i].buyCurrency].push(tx2);
 
     }
 

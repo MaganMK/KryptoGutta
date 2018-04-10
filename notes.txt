@@ -5,6 +5,7 @@ Praktisk om appen:
 - Kan verken garantere nøyaktighet eller at api'et henter korrekte priser
 - Hvis appen ikke finner et tidligere kjøp når den skal regne ut gevinsten på et salg, vil hele salgsummen
   regnes som gevinst.
+- API'et gir ganske riktig pris på angitt dato
 
 Ting som må gjøres:
 - Per nå funker alt kun for bittrex, fordi det ikke er laget kopieringsmetoder for binancetransaksjoner

@@ -36,9 +36,10 @@ function getAllGroups(exchange, content)
 //Returnerer alle grupper som er lagret, feks brukes til utregning når man trykker på knappen
 function getStoredGroups() {
     var groups;
-    for (let i = 0; i < saveCount; i++) {
-            groups = uniteCurrencyGroups(groups,loadCurrencyGroup(i));
-        }
+    for (let i = 0; i < saveCount; i++)
+    {
+        groups = uniteCurrencyGroups(groups,loadCurrencyGroup(i));
+    }
     return groups;
 }
 

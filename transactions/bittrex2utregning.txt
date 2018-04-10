@@ -47,3 +47,7 @@ BUY 0.16509654 12/19/2017: 800$ -> 132$
 
 Totalt utregnet gevinst skal være: 473$ + 112$ + 125$ = 710$ = 5 552 NOK
 
+
+verdi kjøp
+quantity
+unitprice

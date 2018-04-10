@@ -20,31 +20,6 @@ export function createTransaction(exchange, data)
     if (exchange == "coinbase") { return coinbaseTransaction(data); }
 }
 
-//Metode for å kopiere transaksjonsobjekter
-export function createTransactionFromTransaction(tx){
-    return copyBittrexTransaction(tx);
-}
-
-//Kopierer en bittrextransaksjon, må finnes en lettere måte å gjøre dette på
-function copyBittrexTransaction(tx)
-{
-    var ctx = new Transaction(tx.exchange, tx.type, tx.quantity, tx.price, tx.closed);
-    ctx.site = "bittrex";
-    ctx.exchange = String(tx.exchange).split("-");
-    ctx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed) : new Date());
-    if (tx.type == "LIMIT_BUY")
-            {
-                ctx.sellCurrency = String(tx.exchange[0]);
-                ctx.buyCurrency = String(tx.exchange[1]);
-            }
-    else
-            {
-                ctx.sellCurrency = String(tx.exchange[1]);
-                ctx.buyCurrency = String(tx.exchange[0]);
-            }
-    return ctx;
-}
-
 //OrderUuid,Exchange,Type,Quantity,Limit,CommissionPaid,Price,Opened,Closed
 //8a9bf807-f899-4c07-95b8-9d312ef1e192,BTC-ADA,LIMIT_SELL,331,0.00006166,0.00005109,0.02043925,01/08/2018 08:35,
 function bittrexTransaction(data)
@@ -52,6 +27,7 @@ function bittrexTransaction(data)
     var tx = new Transaction(data[1], data[2], data[3], data[6], data[8]);
     tx.site = "bittrex";
     tx.exchange = String(tx.exchange).split("-");
+    tx.mainCurrency = tx.exchange[0];
     tx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed) : new Date());
     if (tx.type == "LIMIT_BUY")
             {
