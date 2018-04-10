@@ -33,16 +33,22 @@
 <form method="post" enctype="multipart/form-data">
     <div class = "row">
         <div class = "col">
-            <label for="bittrex">Bittrex: </label>
-            <input type="file" id="bittrex" name="bittrex" multiple>
+            <div class = "wrapper file-container" id = "bittre">
+            <label for="bittrex">Bittrex</label>
+            <input type="file" id="bittrex" name="bittrex" single>
+            </div>
         </div>
         <div class = "col">
+            <div class = "wrapper file-container" id ="binanc">
             <label for="binance">Binance</label>
-            <input type="file" id="binance" name="binance" multiple>
+            <input type="file" id="binance" name="binance" single class = "file">
+            </div>
         </div>
         <div class = "col">
+            <div class = "wrapper file-container" id = "coinbas">
             <label for="coinbase">Coinbase</label>
-            <input type="file" id="coinbase" name="coinbase" multiple>
+            <input type="file" id="coinbase" name="coinbase" single>
+            </div>
         </div>
     </div>
 </form>
@@ -58,8 +64,10 @@
     <div class = "row">
         <div class = "col"></div>
         <div class = "col">
+            <div class = "wrapper">
             <h3 id = "income" class = "centered-text"> Estimert inntekt: </h3>
             <p id = "test"></p>
+            </div>
         </div>
         <div class = "col"></div>
     </div>

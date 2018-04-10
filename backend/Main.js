@@ -8,6 +8,7 @@ function handleFileInput(event)
 {
     var exchange = event.target.id;
     var file = document.getElementById(exchange);
+    document.getElementById(exchange.substring(0,exchange.length-1)).style = "background-color: #edffed; border-color: #00c400;";
     if(file.files.length)
     {
         var reader = new FileReader();
