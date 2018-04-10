@@ -33,22 +33,18 @@
 <form method="post" enctype="multipart/form-data">
     <div class = "row">
         <div class = "col">
-            <div class = "wrapper file-container" id = "bittre">
-            <label for="bittrex">Bittrex</label>
-            <input type="file" id="bittrex" name="bittrex" single>
-            </div>
+            <label for = "bittrex" id = "bittre" class="btn btn-default file-container">
+            Bittrex<input type="file" id="bittrex" name="bittrex" single>
         </div>
         <div class = "col">
-            <div class = "wrapper file-container" id ="binanc">
-            <label for="binance">Binance</label>
-            <input type="file" id="binance" name="binance" single class = "file">
-            </div>
+                <label for = "binance" id = "binanc" class="btn btn-default file-container">
+                    Binance<input type="file" id="binance" name="binance" single hidden>
+                </label>
         </div>
         <div class = "col">
-            <div class = "wrapper file-container" id = "coinbas">
-            <label for="coinbase">Coinbase</label>
-            <input type="file" id="coinbase" name="coinbase" single>
-            </div>
+            <label for = "coinbase" id = "coinbas" class="btn btn-default file-container">
+                Coinbase<input type="file" id="coinbase" name="coinbase" single hidden>
+            </label>
         </div>
     </div>
 </form>
