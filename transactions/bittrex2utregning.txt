@@ -1,0 +1,49 @@
+   OrderUuid,                           Exchange,     Type,Quantity,   Limit,       CommissionPaid, Price,          Opened,             Closed
+1: 8a9bf807-f899-4c07-95b8-9d312ef1e192,BTC-ADA,LIMIT_SELL,331,        0.00006166,  0.00005109,     0.02043925,     01/08/2018 08:35,   01/08/2018 08:35
+2: 03c985c1-3903-4e7b-8c38-a786de076b7e,BTC-LTC,LIMIT_BUY,0.60879942,0.01676883,0.00002552,0.01020885,01/07/2018 20:30,01/07/2018 20:30
+3: 20977e71-2ce6-4048-b1ec-08a6d0b3f21b,BTC-LTC,LIMIT_SELL,0.4,0.01905,0.00001905,0.00762,12/23/2017 10:35:05 PM,12/23/2017 10:35:05 PM
+4: 679763ba-e803-46f6-8392-fb74d5a7bcd9,ETH-ADA,LIMIT_SELL,250.1273243,0.00066004,0.00041274,0.16509654,12/19/2017 1:49:44 PM,12/19/2017 1:49:44 PM
+5: 4c2424bd-8ae7-4ef3-af5f-5dfd9061b020,BTC-ANS,LIMIT_BUY,5.09481013,0.00392,0.0000498,0.0199207,6/20/2017 10:26:26 AM,6/20/2017 10:26:26 AM
+
+Regner ut skatt manuelt for å ha noe å teste (USD)
+BTC/ETH kan brukes gjerne som trading pair, og da må man gå ut i fra pris?
+
+(kjøp/salg, antall, dato)
+ADA:
+SELL 250 12/19/2017: 0.57$ -> 250*0.57 = 142.5$
+SELL 331 01/08/2018: 1$ -> 331$
+gevinst: 331 + 142 = 473$
+
+LTC:
+SELL 0.4 12/23/2017: 280$ ->  112$
+BUY 0.6088 01/07/2018: Egentlig ikke viktig siden den kommer etter salget
+gevinst: 112$
+
+ANS:
+BUY 5.095 6/20/2017 telles ikke
+
+
+For hovedvalutaen blir antall kjøp = pris betalt/pris per enhet
+(pris i valutaen, dato)
+BTC
+BUY 0.00762 12/23/2017: 14000$ -> 107$          antall: 0.007642857
+BUY 0.02043925 01/08/2018: 16500$ -> 337$       antall: 0.0204242
+SELL 0.0199207 6/20/2017: 2600$ -> 52$          antall: 0.02
+SELL 0.01020885 01/07/2018: 17500$ -> 179$      antall: 0.01029
+
+gevinst salg1: 52$
+gevinst salg2: Har bare et kjøp tidligere på færre enheter, må derfor først regne
+ut salg-kjøp for det som er dekket, så total gevinst for resten av salg
+= (17500*0.007642 - 14000*0.007642) + ((0.01029-0.007642)*17500) =
+= ((17500-14000) * 0.007642) + (0.002648*17500) =
+= 3500*0.007642 + 0.002648 * 17500
+= 27 + 46 = 73$
+total gevinst = 125$
+
+
+ETH
+BUY 0.16509654 12/19/2017: 800$ -> 132$
+
+
+Totalt utregnet gevinst skal være: 473$ + 112$ + 125$ = 710$ = 5 552 NOK
+
