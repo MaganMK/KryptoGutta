@@ -1,5 +1,5 @@
 import {setValue} from "./HTTPhandler.js";
-import {createTransactionFromTransaction} from "./Transaction.js";
+import {fixMainPairs} from "./HTTPhandler.js";
 
 //Klasse for å hver enkelt currency og hver kjøp og salg gjort med den
 export class CurrencyGroup {
@@ -56,14 +56,12 @@ export function groupByCurrency(transactions){
         {
             sell[transactions[i].sellCurrency] = [];
         }
-        //sell[transactions[i].sellCurrency].push(createTransactionFromTransaction(transactions[i]));
         sell[transactions[i].sellCurrency].push(tx1);
 
         if(!(transactions[i].buyCurrency in buy))
         {
             buy[transactions[i].buyCurrency] = [];
         }
-        //buy[transactions[i].buyCurrency].push(createTransactionFromTransaction(transactions[i]));
         buy[transactions[i].buyCurrency].push(tx2);
 
     }
@@ -97,6 +95,8 @@ export function groupByCurrency(transactions){
     delete groups["fined"];
 
     updateValues(groups);
+    fixMainPairs(groups,"BTC");
+    fixMainPairs(groups,"ETH");
     console.log(groups);
     return groups;
 }

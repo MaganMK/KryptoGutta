@@ -30,9 +30,12 @@ export function readFormFile(exchange, file)
     for (let i = skippedLines; i < lines.length; i++)
     {
         let line = lines[i];
+        if (line.length > 0)
+        {
         let lineSplit = line.split(",");
         let transaction = createTransaction(exchange, lineSplit);
         result.push(transaction);
+        }
     }
     return groupByCurrency(result);
 }
