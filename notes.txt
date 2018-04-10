@@ -1,0 +1,8 @@
+Praktisk om appen:
+- Appen funker ikke med rebrands (eksempel antshares -> NEO)
+- For hver 15. transaksjon må appen pause i 1 sekund for å kunne hente mer data fra api (cryptocompare.com)
+- Må linke til cryptocompare.com på nettsiden
+
+Ting som må gjøres:
+- Per nå funker alt kun for bittrex, fordi det ikke er laget kopieringsmetoder for binancetransaksjoner
+- Selve kalkuleringen

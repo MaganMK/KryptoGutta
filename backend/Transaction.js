@@ -21,7 +21,26 @@ export function createTransaction(exchange, data)
 
 //Metode for å kopiere transaksjonsobjekter
 export function createTransactionFromTransaction(tx){
-    return new Transaction(tx.exchange, tx.type, tx.quantity, tx.price, tx.closed);
+    return copyBittrexTransaction(tx);
+}
+
+function copyBittrexTransaction(tx)
+{
+    var ctx = new Transaction(tx.exchange, tx.type, tx.quantity, tx.price, tx.closed);
+    ctx.site = "bittrex";
+    ctx.exchange = String(tx.exchange).split("-");
+    ctx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed) : new Date());
+    if (tx.type == "LIMIT_BUY")
+            {
+                ctx.sellCurrency = String(tx.exchange[0]);
+                ctx.buyCurrency = String(tx.exchange[1]);
+            }
+    else
+            {
+                ctx.sellCurrency = String(tx.exchange[1]);
+                ctx.buyCurrency = String(tx.exchange[0]);
+            }
+    return ctx;
 }
 
 //OrderUuid,Exchange,Type,Quantity,Limit,CommissionPaid,Price,Opened,Closed
@@ -29,6 +48,7 @@ export function createTransactionFromTransaction(tx){
 function bittrexTransaction(data)
 {
     var tx = new Transaction(data[1], data[2], data[3], data[6], data[8]);
+    tx.site = "bittrex";
     tx.exchange = String(tx.exchange).split("-");
     tx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed) : new Date());
     if (tx.type == "LIMIT_BUY")
@@ -49,6 +69,7 @@ function bittrexTransaction(data)
 function binanceTransaction(data)
 {
     var tx = new Transaction(data[1], data[2], data[4], data[3], data[0]);
+    tx.site = "binance";
     tx.date = new Date(tx.closed.substring(0,10)); // Usikker på om denne daten funker i alle browsere
     var i = tx.exchange.length == 6 ? 3 : 4; //Noen valutaer har 4 tegn, feks IOTA
     if (tx.type == "BUY")
@@ -71,6 +92,7 @@ function coinbaseTransaction(data)
 {
     //data[5] er notes, feks: Bought 0.22623156 ETH for €52.00 EUR
     var tx = new Transaction(data[3], data[5], data[2], data[7], data[0]);
+    tx.site = "coinbase";
     tx.date = new Date(tx.closed.substring(0,10));
     if (tx.type.substring(0,6) == "Bought")
     {
