@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fdf2b5d-175a-4a74-a40b-f3cc0dbef11c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/CurrencyGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/CurrencyGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/HTTPhandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/HTTPhandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Transaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Utility.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Utility.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +27,17 @@
       <file leaf-file-name="Utility.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/Utility.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-160">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="299">
+              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notes.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/notes.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -43,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Transaction.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Transaction.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/Transaction.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1547">
@@ -73,14 +81,14 @@
         <option value="$PROJECT_DIR$/backend/Master.js" />
         <option value="$PROJECT_DIR$/website/style.css" />
         <option value="$PROJECT_DIR$/transactions/coinbase.csv" />
-        <option value="$PROJECT_DIR$/backend/Utility.js" />
         <option value="$PROJECT_DIR$/website/index.html" />
         <option value="$PROJECT_DIR$/backend/Main.js" />
         <option value="$PROJECT_DIR$/transactions/bittrex2.csv" />
-        <option value="$PROJECT_DIR$/notes.txt" />
         <option value="$PROJECT_DIR$/backend/HTTPhandler.js" />
         <option value="$PROJECT_DIR$/backend/CurrencyGroup.js" />
         <option value="$PROJECT_DIR$/backend/Transaction.js" />
+        <option value="$PROJECT_DIR$/backend/Utility.js" />
+        <option value="$PROJECT_DIR$/notes.txt" />
       </list>
     </option>
   </component>
@@ -104,26 +112,6 @@
             <path>
               <item name="KryptoGutta" type="b2602c69:ProjectViewProjectNode" />
               <item name="KryptoGutta" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KryptoGutta" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KryptoGutta" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KryptoGutta" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KryptoGutta" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KryptoGutta" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KryptoGutta" type="462c0819:PsiDirectoryNode" />
-              <item name="transactions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KryptoGutta" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KryptoGutta" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -518,13 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/CurrencyGroup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1319">
@@ -539,10 +520,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Utility.js">
+    <entry file="file://$PROJECT_DIR$/backend/Transaction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-160">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="1547">
+          <caret line="91" column="33" lean-forward="true" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -553,10 +534,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Transaction.js">
+    <entry file="file://$PROJECT_DIR$/backend/Utility.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="33" lean-forward="true" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
+        <state relative-caret-position="299">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="21" />
         </state>
       </provider>
     </entry>

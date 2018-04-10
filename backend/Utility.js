@@ -26,7 +26,7 @@ export function readFormFile(exchange, file)
 {
     var result = [];
     let lines = String(file).split("\n");
-    let skippedLines = (exchange == "coinbase" ? 5 : 1);
+    let skippedLines = (exchange == "coinbase" ? 5 : 1); //Denne må gjøres til en funksjon ved flere exchanges
     for (let i = skippedLines; i < lines.length; i++)
     {
         let line = lines[i];
