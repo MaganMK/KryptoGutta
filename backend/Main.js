@@ -47,7 +47,8 @@ function getStoredGroups() {
     updateValues(groups);
     fixMainPairs(groups,"BTC");
     fixMainPairs(groups,"ETH");
-    console.log(groups);
+
+    calculateIncome(groups, 2018);
     return groups;
 }
 
@@ -61,18 +62,88 @@ function loadCurrencyGroup(number) {
 }
 
 // Kalkulerer gevinst/tap for alle currencygruppene
-function calculateIncome(currencyGroups)
+function calculateIncome(currencyGroups, year)
 {
     var income = 0;
 
     console.log(currencyGroups);
 
-    for (var group in currencyGroups)
+
+    for (var key in currencyGroups)
     {
-        //console.log(currencyGroups[group]);
-        //currencyGroups[group] gir et currencyGroupObject
-        // setBalance(currencyGroups[group];
+        let group = currencyGroups[key];
+
+        // Sortere gruppene på dato
+        group.sales.sort(function (a,b) {
+            return a.date.getTime() - b.date.getTime()
+        });
+
+        group.buys.sort(function (a,b) {
+            return a.date.getTime() - b.date.getTime();
+        });
+
+        // Fjerene salg som ikke har på riktig årstall
+        group.sales = group.sales.filter(function(transaction){
+            return transaction.date.getFullYear() == year;
+        });
+
+
+        // Gå gjennom hvert salg og se på tilhørende kjøp
+        for (let saleIndex in group.sales)
+        {
+            let currentSale = group.sales[saleIndex];
+            for (let buyIndex in group.buys)
+            {
+                if(currentSale.quantity > 0)
+                {
+                    let currentBuy = group.buys[buyIndex];
+
+                    if(currentBuy.date.getTime() <= currentSale.date.getTime)
+                    {
+                        let buyQuantity = currentBuy.quantity;
+                        let saleQuantity = currentSale.quantity;
+
+                        let profit;
+
+                        if(buyQuantity > saleQuantity)
+                        {
+                            profit = saleQuantity*currentSale.unitPrice - saleQuantity*currentBuy.unitPrice;
+                            currentBuy.quantity = buyQuantity - saleQuantity;
+                            currentSale.quantity = 0;
+                        }
+                        else if(buyQuantity == saleQuantity)
+                        {
+                            profit = saleQuantity*currentSale.unitPrice - saleQuantity*currentBuy.unitPrice;
+                            currentBuy.quantity = buyQuantity - saleQuantity;
+                            currentSale.quantity = 0;
+                        }
+                        else
+                        {
+                            profit = buyQuantity*currentSale.unitPrice - buyQuantity*currentBuy.unitPrice;
+                            currentBuy.quantity = 0;
+                            currentSale.quantity -= buyQuantity;
+                        }
+
+
+                        income += profit;
+
+                    }
+                }
+
+            }
+        }
+        for (let saleIndex in group.sales)
+        {
+            let currentSale = group.sales[saleIndex];
+            if (currentSale.quantity > 0) {
+                income += currentSale.quantity*currentSale.unitPrice;
+            }
+        }
+
+        console.log(income);
+
     }
+
 }
 
 // Går gjennom kjøp og salg for en valuta og setter samlet gevinst/tap for denne
