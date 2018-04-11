@@ -1,5 +1,7 @@
 import {readFormFile} from "./Utility.js";
 import {uniteCurrencyGroups} from "./CurrencyGroup.js";
+import {fixMainPairs} from "./HTTPhandler.js";
+import {updateValues} from "./CurrencyGroup.js";
 
 var saveCount = 0;
 
@@ -41,6 +43,10 @@ function getStoredGroups() {
     {
         groups = uniteCurrencyGroups(groups,loadCurrencyGroup(i));
     }
+    updateValues(groups);
+    fixMainPairs(groups,"BTC");
+    fixMainPairs(groups,"ETH");
+    console.log(groups);
     return groups;
 }
 

@@ -2,7 +2,9 @@
 // Viktig å sjekke at timestamp er riktig hvis ting ikke funker
 export function setValue(tx, toCurrency)
 {
+    tx.date = new Date(tx.date);
     let timestamp = tx.date.getTime()/1000;
+    console.log(tx.date);
     let fromCurrency = tx.mainCurrency;
     let url = "https://min-api.cryptocompare.com/data/pricehistorical?fsym="
     + fromCurrency + "&tsyms=" + toCurrency + "&ts=" + timestamp;

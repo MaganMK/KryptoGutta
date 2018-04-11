@@ -14,7 +14,7 @@ export class CurrencyGroup {
 
 //Oppdaterer value-feltet til transaksjoner med verdien per enhet på den angitte datoen
 //cryptocompare.com - rate limit på 15 historie-requests per sekund, derfor sleep 1100ms
-function updateValues(groups)
+export function updateValues(groups)
     {
         var count = 0;
         for (var majorKey in groups)
@@ -94,9 +94,9 @@ export function groupByCurrency(transactions){
     delete groups["unde"];
     delete groups["fined"];
 
-    updateValues(groups);
-    fixMainPairs(groups,"BTC");
-    fixMainPairs(groups,"ETH");
+    //updateValues(groups);
+    //fixMainPairs(groups,"BTC");
+    //fixMainPairs(groups,"ETH");
     console.log(groups);
     return groups;
 }
