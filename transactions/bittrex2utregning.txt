@@ -12,12 +12,13 @@ BTC/ETH kan brukes gjerne som trading pair, og da må man gå ut i fra pris?
 ADA:
 SELL 250 12/19/2017: 0.57$ -> 250*0.57 = 142.5$
 SELL 331 01/08/2018: 1$ -> 331$
-gevinst: 331 + 142 = 473$
+gevinst 2018: 331$
+gevinst 2017: 142$
 
 LTC:
 SELL 0.4 12/23/2017: 280$ ->  112$
 BUY 0.6088 01/07/2018: Egentlig ikke viktig siden den kommer etter salget
-gevinst: 112$
+gevinst 2017: 112$
 
 ANS:
 BUY 5.095 6/20/2017 telles ikke
@@ -39,6 +40,8 @@ ut salg-kjøp for det som er dekket, så total gevinst for resten av salg
 = 3500*0.007642 + 0.002648 * 17500
 = 27 + 46 = 73$
 total gevinst = 125$
+2017: 52
+2018: 73
 
 
 ETH
@@ -51,3 +54,6 @@ Totalt utregnet gevinst skal være: 473$ + 112$ + 125$ = 710$ = 5 552 NOK
 verdi kjøp
 quantity
 unitprice
+
+2017: 142 + 112 + 52 = 306$
+2018: 73 + 331 = 404$
