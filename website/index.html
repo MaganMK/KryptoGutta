@@ -27,24 +27,45 @@
 <body>
 <div class="row">
     <div id = "header" class="col">
-        <h1>Kryptokalkulator</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Kryptokalkulator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Calculator</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
 </div>
 <form method="post" enctype="multipart/form-data">
     <div class = "row">
         <div class = "col">
+            <div class = "wrapper">
             <label for = "bittrex" id = "bittre" class="btn btn-default file-container">
             Bittrex<input type="file" id="bittrex" name="bittrex" single>
+            </div>
         </div>
         <div class = "col">
+            <div class = "wrapper">
                 <label for = "binance" id = "binanc" class="btn btn-default file-container">
                     Binance<input type="file" id="binance" name="binance" single hidden>
                 </label>
+            </div>
         </div>
         <div class = "col">
+            <div class = "wrapper">
             <label for = "coinbase" id = "coinbas" class="btn btn-default file-container">
                 Coinbase<input type="file" id="coinbase" name="coinbase" single hidden>
             </label>
+            </div>
         </div>
     </div>
 </form>
@@ -52,7 +73,7 @@
         <div class = "col"></div>
         <div class = "col">
             <div class = "wrapper">
-                <button id = "submit">Submit</button>
+                <button id = "submit-btn" class = "btn btn-block">Calculate</button>
             </div>
         </div>
         <div class = "col"></div>
@@ -61,7 +82,7 @@
         <div class = "col"></div>
         <div class = "col">
             <div class = "wrapper">
-            <h3 id = "income" class = "centered-text"> Estimert inntekt: </h3>
+            <h3 id = "income" class = "centered-text">Estimert inntekt: </h3>
             <p id = "test"></p>
             </div>
         </div>

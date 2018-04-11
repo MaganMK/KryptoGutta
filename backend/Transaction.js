@@ -48,8 +48,9 @@ function binanceTransaction(data)
 {
     var tx = new Transaction(data[1], data[2], data[4], data[3], data[0]);
     tx.site = "binance";
-    tx.date = new Date(tx.closed.substring(0,10)); // Usikker på om denne daten funker i alle browsere
+    tx.date = new Date(tx.closed.substring(0,4),tx.closed.substring(8,10), tx.closed.substring(5,7)); // Usikker på om denne daten funker i alle browsere
     var i = tx.exchange.length == 6 ? 3 : 4; //Noen valutaer har 4 tegn, feks IOTA
+    tx.mainCurrency = tx.exchange.substring(i);
     if (tx.type == "BUY")
     {
         tx.sellCurrency = tx.exchange.substring(i);

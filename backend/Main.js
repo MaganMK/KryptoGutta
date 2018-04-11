@@ -77,4 +77,4 @@ document.getElementById("bittrex").addEventListener("change", handleFileInput, f
 document.getElementById("binance").addEventListener("change", handleFileInput, false);
 document.getElementById("coinbase").addEventListener("change", handleFileInput, false);
 
-document.getElementById("submit").addEventListener("click", getStoredGroups, false);
+document.getElementById("submit-btn").addEventListener("click", getStoredGroups, false);

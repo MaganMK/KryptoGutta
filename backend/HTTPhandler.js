@@ -9,12 +9,19 @@ export function setValue(tx, toCurrency)
     jQuery.when(
         jQuery.getJSON(url)
     ).done( function(json) {
-        tx.value = json[fromCurrency][toCurrency] * tx.price;
+        if (tx.site == "bittrex") {
+        tx.value = json[fromCurrency][toCurrency] * tx.quantity;
         tx.unitPrice = tx.value/tx.quantity;
+        }
+        else if (tx.site == "binance") {
+            tx.unitPrice = json[tx.mainCurrency][toCurrency] * tx.price;
+            tx.value = tx.unitPrice * tx.quantity;
+        }
     });
 }
 
 export function fixMainPairs(groups, ticker) {
+    if (ticker in groups){
     let group = groups[ticker];
     for (let i in group.sales)
     {
@@ -23,6 +30,7 @@ export function fixMainPairs(groups, ticker) {
     for (let i in group.buys)
     {
         setMainPrice(group.buys[i], ticker, "USD");
+    }
     }
 }
 
