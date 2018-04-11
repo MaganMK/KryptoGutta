@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fdf2b5d-175a-4a74-a40b-f3cc0dbef11c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/transactions/binance2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/CurrencyGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/CurrencyGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/HTTPhandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/HTTPhandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Transaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transactions/bittrex2utregning.txt" beforeDir="false" afterPath="$PROJECT_DIR$/transactions/bittrex2utregning.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,35 +18,17 @@
       <file leaf-file-name="Main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-935">
-              <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+            <state relative-caret-position="221">
+              <caret line="113" column="25" lean-forward="true" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bittrex2.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/transactions/bittrex2.csv">
+      <file leaf-file-name="bittrex2utregning.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/transactions/bittrex2utregning.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="42" selection-end-line="5" selection-end-column="137" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="binance.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/transactions/binance.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="binance2.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/transactions/binance2.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+            <state relative-caret-position="418">
+              <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -63,11 +42,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Transaction.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/Transaction.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="HTTPhandler.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/HTTPhandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
+            <state relative-caret-position="-656">
+              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -88,7 +76,6 @@
         <option value="$PROJECT_DIR$/backend/Calculator.js" />
         <option value="$PROJECT_DIR$/backend/Master.js" />
         <option value="$PROJECT_DIR$/transactions/coinbase.csv" />
-        <option value="$PROJECT_DIR$/transactions/bittrex2utregning.txt" />
         <option value="$PROJECT_DIR$/backend/Utility.js" />
         <option value="$PROJECT_DIR$/transactions/bittrex2.csv" />
         <option value="$PROJECT_DIR$/transactions/bittrex3.csv" />
@@ -96,11 +83,12 @@
         <option value="$PROJECT_DIR$/website/index.html" />
         <option value="$PROJECT_DIR$/transactions/binance.csv" />
         <option value="$PROJECT_DIR$/notes.txt" />
-        <option value="$PROJECT_DIR$/backend/Transaction.js" />
         <option value="$PROJECT_DIR$/transactions/binance2.csv" />
         <option value="$PROJECT_DIR$/backend/CurrencyGroup.js" />
         <option value="$PROJECT_DIR$/backend/Main.js" />
         <option value="$PROJECT_DIR$/backend/HTTPhandler.js" />
+        <option value="$PROJECT_DIR$/transactions/bittrex2utregning.txt" />
+        <option value="$PROJECT_DIR$/backend/Transaction.js" />
       </list>
     </option>
   </component>
@@ -110,7 +98,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="15" />
     <option name="y" value="30" />
     <option name="width" value="1890" />
@@ -531,20 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/transactions/bittrex2utregning.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Transaction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -562,13 +536,6 @@
     <entry file="file://$PROJECT_DIR$/transactions/bittrex4.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/transactions/bittrex2.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="42" selection-end-line="5" selection-end-column="137" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/transactions/binance2.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -583,6 +550,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/transactions/bittrex2.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="42" selection-end-line="5" selection-end-column="137" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/CurrencyGroup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -592,15 +566,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-935">
-          <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+        <state relative-caret-position="221">
+          <caret line="113" column="25" lean-forward="true" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transactions/bittrex2utregning.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/Transaction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/HTTPhandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
+        <state relative-caret-position="-656">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="32" />
         </state>
       </provider>
     </entry>
