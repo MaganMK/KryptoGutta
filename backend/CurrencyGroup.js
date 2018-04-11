@@ -23,7 +23,7 @@ export function updateValues(groups)
             for (let key in group.sales)
             {
                 let sale = group.sales[key]
-                setValue(sale, "USD");
+                setValue(sale, majorKey, "USD");
                 count++
                 if (count % 15 == 0)
                 {
@@ -34,7 +34,7 @@ export function updateValues(groups)
             for (let key in group.buys)
             {
                 let buy = group.buys[key];
-                setValue(buy, "USD");
+                setValue(buy, majorKey, "USD");
                 count++;
                 if (count % 15 == 0)
                 {
@@ -94,9 +94,6 @@ export function groupByCurrency(transactions){
     delete groups["unde"];
     delete groups["fined"];
 
-    //updateValues(groups);
-    //fixMainPairs(groups,"BTC");
-    //fixMainPairs(groups,"ETH");
     console.log(groups);
     return groups;
 }

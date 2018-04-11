@@ -7,6 +7,8 @@ Praktisk om appen:
   regnes som gevinst.
 - API'et gir ganske riktig pris på angitt dato
 - Går utifra at coins bare har blitt tradet mot btc og eth (kan endres)
+- Coinbase har med sending i csv'en sin, da får quanitity negativt beløp
+- Kanskje overse EUR nå man regner ut gevinst?
 
 Ting som må gjøres:
 - Per nå funker alt kun for bittrex, fordi det ikke er laget kopieringsmetoder for binancetransaksjoner

@@ -28,6 +28,7 @@ function bittrexTransaction(data)
     tx.site = "bittrex";
     tx.exchange = String(tx.exchange).split("-");
     tx.mainCurrency = tx.exchange[0];
+    tx.otherCurrency = tx.exchange[1];
     tx.date = (typeof tx.closed != "undefined" ? new Date(tx.closed) : new Date());
     if (tx.type == "LIMIT_BUY")
             {
@@ -73,11 +74,14 @@ function coinbaseTransaction(data)
     //data[5] er notes, feks: Bought 0.22623156 ETH for €52.00 EUR
     var tx = new Transaction(data[3], data[5], data[2], data[7], data[0]);
     tx.site = "coinbase";
-    tx.date = new Date(tx.closed.substring(0,10));
+    tx.closed = tx.closed.substring(3,5) + "/" + tx.closed.substring(0,2) + "/" + tx.closed.substring(6,10);
+    tx.date = new Date(tx.closed);
+    tx.mainCurrency = tx.exchange;
     if (tx.type.substring(0,6) == "Bought")
     {
         tx.sellCurrency = "EUR";
         tx.buyCurrency = tx.exchange;
+
     }
     else
     {

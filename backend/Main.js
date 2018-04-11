@@ -43,6 +43,7 @@ function getStoredGroups() {
     {
         groups = uniteCurrencyGroups(groups,loadCurrencyGroup(i));
     }
+    delete groups["EUR"];
     updateValues(groups);
     fixMainPairs(groups,"BTC");
     fixMainPairs(groups,"ETH");
