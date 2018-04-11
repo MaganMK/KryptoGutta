@@ -9,6 +9,7 @@ export class Transaction {
         this.type = type;
         this.date = new Date();
         this.value = 0;
+        this.unitPrice = 0;
     }
 }
 

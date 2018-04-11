@@ -72,63 +72,79 @@ function calculateIncome(groups, year)
 
     for (var key in groups)
     {
+
         let group = groups[key];
+        group = JSON.parse(JSON.stringify(group));
         //console.log(group); riktig
 
         // Sortere gruppene på dato
         group.sales.sort(function (a,b) {
-            return a.date.getTime() - b.date.getTime()
+            return new Date(a.date).getTime() - new Date(b.date).getTime()
         });
 
         group.buys.sort(function (a,b) {
-            return a.date.getTime() - b.date.getTime();
+            return new Date(a.date).getTime() - new Date(b.date).getTime()
         });
 
         // Fjerene salg som ikke har på riktig årstall
         group.sales = group.sales.filter(function(transaction){
-            return transaction.date.getFullYear() == year;
+            return new Date(transaction.date).getFullYear() == year;
         });
+
+        /*
+        let group = jQuery.extend(true, {}, group2);
+
+        console.log("hei");
+        console.log(group2);
+
+        group = JSON.parse(JSON.stringify(group));
+        console.log(group);
+        */
 
 
         // Gå gjennom hvert salg og se på tilhørende kjøp
         for (let saleIndex in group.sales)
         {
             let currentSale = group.sales[saleIndex];
+            currentSale.date = new Date(currentSale.date);
             //console.log(currentSale) riktig
             for (let buyIndex in group.buys)
             {
                 if(currentSale.quantity > 0)
                 {
                     let currentBuy = group.buys[buyIndex];
-                    //console.log(currentBuy); riktig
+                    currentBuy.date = new Date(currentBuy.date);
+                    //console.log(currentBuy); RIKTIG
 
                     if(currentBuy.date.getTime() <= currentSale.date.getTime())
                     {
-                        let buyQuantity = currentBuy.quantity;
-                        let saleQuantity = currentSale.quantity;
-                        //console.log(buyQuantity); riktig
+
+                        // console.log(currentBuy); RIKTIG
 
                         let profit = 0;
 
-                        if(buyQuantity > saleQuantity)
+                        if(currentBuy.quantity > currentSale.quantity)
                         {
-                            profit = saleQuantity*currentSale.unitPrice - saleQuantity*currentBuy.unitPrice;
-                            currentBuy.quantity = buyQuantity - saleQuantity;
+                            profit = currentSale.quantity*currentSale.unitPrice - currentSale.quantity*currentBuy.unitPrice;
+                            currentBuy.quantity = currentBuy.quantity - currentSale.quantity;
                             currentSale.quantity = 0;
                             console.log("1 " + profit);
                         }
-                        else if(buyQuantity == saleQuantity)
+                        else if(currentBuy.quantity == currentSale.quantity)
                         {
-                            profit = saleQuantity*currentSale.unitPrice - saleQuantity*currentBuy.unitPrice;
-                            currentBuy.quantity = buyQuantity - saleQuantity;
+                            profit = currentSale.quantity*currentSale.unitPrice - currentSale.quantity*currentBuy.unitPrice;
+                            currentBuy.quantity = currentBuy.quantity - currentSale.quantity;
                             currentSale.quantity = 0;
                             console.log("2 " + profit);
                         }
                         else
                         {
-                            profit = buyQuantity*currentSale.unitPrice - buyQuantity*currentBuy.unitPrice;
+                            console.log(currentBuy);
+                            console.log(currentBuy.unitPrice);
+
+                            profit = currentBuy.quantity*currentSale.unitPrice - currentBuy.quantity*currentBuy.unitPrice;
+                            currentSale.quantity -= currentBuy.quantity;
                             currentBuy.quantity = 0;
-                            currentSale.quantity -= buyQuantity;
                             console.log("3 " + profit);
                         }
                         income += profit;
