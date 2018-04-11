@@ -93,8 +93,6 @@ export function groupByCurrency(transactions){
     delete groups["undefined"];
     delete groups["unde"];
     delete groups["fined"];
-
-    console.log(groups);
     return groups;
 }
 

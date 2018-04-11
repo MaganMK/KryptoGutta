@@ -62,6 +62,7 @@ function setMainPrice(tx, fromCurrency, toCurrency)
     ).done( function(json) {
     if (tx.site != "coinbase") {
         tx.unitPrice = json[fromCurrency][toCurrency];
+        tx.value = tx.unitPrice * tx.price;
         tx.quantity = tx.value/tx.unitPrice;
         }
     });

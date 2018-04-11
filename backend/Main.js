@@ -44,10 +44,6 @@ function getStoredGroups() {
         groups = uniteCurrencyGroups(groups,loadCurrencyGroup(i));
     }
     delete groups["EUR"];
-    updateValues(groups);
-    fixMainPairs(groups,"BTC");
-    fixMainPairs(groups,"ETH");
-
     calculateIncome(groups, 2018);
     return groups;
 }
@@ -62,16 +58,22 @@ function loadCurrencyGroup(number) {
 }
 
 // Kalkulerer gevinst/tap for alle currencygruppene
-function calculateIncome(currencyGroups, year)
+function calculateIncome(groups, year)
 {
     var income = 0;
 
-    console.log(currencyGroups);
+    updateValues(groups);
+    fixMainPairs(groups,"BTC");
+    fixMainPairs(groups,"ETH");
 
+    console.log(groups);
 
-    for (var key in currencyGroups)
+    //console.log(currencyGroups); riktig
+
+    for (var key in groups)
     {
-        let group = currencyGroups[key];
+        let group = groups[key];
+        //console.log(group); riktig
 
         // Sortere gruppene på dato
         group.sales.sort(function (a,b) {
@@ -92,41 +94,44 @@ function calculateIncome(currencyGroups, year)
         for (let saleIndex in group.sales)
         {
             let currentSale = group.sales[saleIndex];
+            //console.log(currentSale) riktig
             for (let buyIndex in group.buys)
             {
                 if(currentSale.quantity > 0)
                 {
                     let currentBuy = group.buys[buyIndex];
+                    //console.log(currentBuy); riktig
 
-                    if(currentBuy.date.getTime() <= currentSale.date.getTime)
+                    if(currentBuy.date.getTime() <= currentSale.date.getTime())
                     {
                         let buyQuantity = currentBuy.quantity;
                         let saleQuantity = currentSale.quantity;
+                        //console.log(buyQuantity); riktig
 
-                        let profit;
+                        let profit = 0;
 
                         if(buyQuantity > saleQuantity)
                         {
                             profit = saleQuantity*currentSale.unitPrice - saleQuantity*currentBuy.unitPrice;
                             currentBuy.quantity = buyQuantity - saleQuantity;
                             currentSale.quantity = 0;
+                            console.log("1 " + profit);
                         }
                         else if(buyQuantity == saleQuantity)
                         {
                             profit = saleQuantity*currentSale.unitPrice - saleQuantity*currentBuy.unitPrice;
                             currentBuy.quantity = buyQuantity - saleQuantity;
                             currentSale.quantity = 0;
+                            console.log("2 " + profit);
                         }
                         else
                         {
                             profit = buyQuantity*currentSale.unitPrice - buyQuantity*currentBuy.unitPrice;
                             currentBuy.quantity = 0;
                             currentSale.quantity -= buyQuantity;
+                            console.log("3 " + profit);
                         }
-
-
                         income += profit;
-
                     }
                 }
 
