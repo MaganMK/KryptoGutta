@@ -1,3 +1,4 @@
+
 // Returnerer prisen for en enhet av fromCurrency i toCurrency på angitt dato
 // Viktig å sjekke at timestamp er riktig hvis ting ikke funker
 export function setValue(tx, fromCurrency, toCurrency)

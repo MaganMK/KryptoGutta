@@ -41,7 +41,9 @@ export function updateValues(groups)
                     sleep(1100);
                 }
             }
+
     }
+    return groups;
 }
 
 // Tar inn en liste med transaksjoner og returnerer objekt sortert på currencies

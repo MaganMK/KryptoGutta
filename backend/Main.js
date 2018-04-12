@@ -2,6 +2,7 @@ import {readFormFile} from "./Utility.js";
 import {uniteCurrencyGroups} from "./CurrencyGroup.js";
 import {fixMainPairs} from "./HTTPhandler.js";
 import {updateValues} from "./CurrencyGroup.js";
+import {setValue} from "./HTTPhandler.js";
 
 var saveCount = 0;
 
@@ -62,20 +63,14 @@ function calculateIncome(groups, year)
 {
     var income = 0;
 
-    updateValues(groups);
+    let groups = updateValues(groups);
     fixMainPairs(groups,"BTC");
     fixMainPairs(groups,"ETH");
-
-    console.log(groups);
-
-    //console.log(currencyGroups); riktig
 
     for (var key in groups)
     {
 
         let group = groups[key];
-        group = JSON.parse(JSON.stringify(group));
-        //console.log(group); riktig
 
         // Sortere gruppene på dato
         group.sales.sort(function (a,b) {
@@ -91,35 +86,23 @@ function calculateIncome(groups, year)
             return new Date(transaction.date).getFullYear() == year;
         });
 
-        /*
-        let group = jQuery.extend(true, {}, group2);
-
-        console.log("hei");
-        console.log(group2);
-
-        group = JSON.parse(JSON.stringify(group));
-        console.log(group);
-        */
-
 
         // Gå gjennom hvert salg og se på tilhørende kjøp
         for (let saleIndex in group.sales)
         {
             let currentSale = group.sales[saleIndex];
             currentSale.date = new Date(currentSale.date);
-            //console.log(currentSale) riktig
+
+            //Får ikke tak i unitPrice
             for (let buyIndex in group.buys)
             {
                 if(currentSale.quantity > 0)
                 {
                     let currentBuy = group.buys[buyIndex];
                     currentBuy.date = new Date(currentBuy.date);
-                    //console.log(currentBuy); RIKTIG
 
                     if(currentBuy.date.getTime() <= currentSale.date.getTime())
                     {
-
-                        // console.log(currentBuy); RIKTIG
 
                         let profit = 0;
 
@@ -160,18 +143,10 @@ function calculateIncome(groups, year)
                 income += currentSale.quantity*currentSale.unitPrice;
             }
         }
-
         console.log(income);
-
     }
 
 }
-
-// Går gjennom kjøp og salg for en valuta og setter samlet gevinst/tap for denne
-function setBalance(currencyGroup) {
-    //Sett currencyGroups kjøp vs salg balanse
-}
-
 document.getElementById("bittrex").addEventListener("change", handleFileInput, false);
 document.getElementById("binance").addEventListener("change", handleFileInput, false);
 document.getElementById("coinbase").addEventListener("change", handleFileInput, false);
