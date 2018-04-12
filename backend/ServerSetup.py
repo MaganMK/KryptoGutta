@@ -1,16 +1,18 @@
 
 from flask import Flask
+from flask import request
+from backend.MakeGroups import handleInput
 
 app = Flask(__name__)
 
-@app.route("/", methods=['POST', 'OPTIONS'])
 
-def handleInput():
-    print("GOOOO")
-    fileWriter = open("../transactions/test.txt", 'a')
-    fileWriter.write("JAAAAA FOR FAEN\n")
-    fileWriter.close()
+@app.route("/", methods=['GET','POST', 'OPTIONS'])
+def begin():
+    print("\n\nCONECTION MADE")
+    data = request.data
+    handleInput(data)
     return "OK"
+
 
 @app.after_request
 def after_request(response):
