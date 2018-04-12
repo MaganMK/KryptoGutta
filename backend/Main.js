@@ -3,7 +3,13 @@
 
 function invokePython()
 {
-    console.log("Kjlør da");
+    console.log("Kjør da");
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("POST", "http://127.0.0.1:5000/", true);
+
+    xhttp.send();
 }
 
 
