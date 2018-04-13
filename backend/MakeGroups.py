@@ -2,7 +2,7 @@
 
 def handleInput(data):
     data = data.decode("utf-8")
-    fileWriter = open("../transactions/test.txt", 'a')
+    fileWriter = open("../backend/test.txt", 'w')
     print(data)
-    fileWriter.write(data)
+    fileWriter.write("100 kr")
     fileWriter.close()

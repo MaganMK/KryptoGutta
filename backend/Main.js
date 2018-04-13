@@ -3,7 +3,6 @@
 
 function invokePython(event)
 {
-    console.log("Javascript-kall");
     // Setter opp conection med serveren
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "http://127.0.0.1:5000/", true);
@@ -17,10 +16,23 @@ function invokePython(event)
         reader.readAsBinaryString(file.files[0]);
         reader.onload= function(e)
         {
+            console.log("Javascript-kall");
+
             let content = e.target.result;
             xhttp.send(content); // Sender filene som strenge til serveren
         };
     }
+
+
+    let result = "NO RESULT";
+
+    fetch('../backend/test.txt')
+        .then(response => response.text())
+        .then(text => result = document.getElementById("income").innerText = "Estimert inntekt: " + text);
+
+
+
+
 }
 
 
