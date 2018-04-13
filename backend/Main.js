@@ -1,8 +1,9 @@
 
 
 
-function invokePython(event)
+async function invokePython(event)
 {
+
     // Setter opp conection med serveren
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "http://127.0.0.1:5000/", true);
@@ -16,23 +17,26 @@ function invokePython(event)
         reader.readAsBinaryString(file.files[0]);
         reader.onload= function(e)
         {
-            console.log("Javascript-kall");
-
             let content = e.target.result;
             xhttp.send(content); // Sender filene som strenge til serveren
         };
     }
 
+    await sleep(5000);
+    console.log("Sleep finished");
 
-    let result = "NO RESULT";
+    fetchResult();
+}
 
+function fetchResult()
+{
     fetch('../backend/test.txt')
         .then(response => response.text())
-        .then(text => result = document.getElementById("income").innerText = "Estimert inntekt: " + text);
+        .then(text => document.getElementById("income").innerText = "Estimert inntekt: " + text);
+}
 
-
-
-
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
