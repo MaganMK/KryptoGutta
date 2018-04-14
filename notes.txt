@@ -4,6 +4,8 @@ Praktisk om appen:
 - Kan verken garantere nøyaktighet eller at api'et henter korrekte priser
 - Hvis appen ikke finner et tidligere kjøp når den skal regne ut gevinsten på et salg, vil hele salgsummen
   regnes som gevinst?
-- Vi må kanskje regne ut alle transaksjoner uansett år, og kun legge til profitt hvis salget er fra valgt år?
 
 Ting som må gjøres:
+- Ordne nettsiden
+- Regne ut total verdi ved årsslutt
+- Regne ut tap og gevinst, ikke bare summen
