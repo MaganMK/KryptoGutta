@@ -8,6 +8,13 @@ def calculate(year):
     groups = group_transactions(transactions, year)
     groups = sort_on_date(groups)
     result = calculate_total(groups)
+    write_to_result_file(result)
+
+
+def write_to_result_file(result):
+    writer = open("../backend/result.txt", "w")
+    writer.write(str(result) + " kr")
+    writer.close()
 
 
 def read_file():
@@ -40,8 +47,6 @@ def sort_on_date(groups):
         groups[name]["sales"].sort(key = lambda tx : tx.date)
         groups[name]["buys"].sort(key=lambda tx: tx.date)
 
-        for tx in groups[name]["sales"]:
-            print(str(tx))
     return groups
 
 
@@ -50,8 +55,11 @@ def calculate_total(groups):
     for currency in groups.keys():
         for current_sale in groups[currency]["sales"]:
             for current_buy in groups[currency]["buys"]:
+                current_sale.quantity = float(current_sale.quantity)
                 if current_sale.quantity > 0:
+
                     if current_buy.date <= current_sale.date:
+                        current_buy.quantity = float(current_buy.quantity)
                         if current_buy.quantity >= current_sale.quantity:
                             balance += current_sale.unit_price * current_sale.quantity - current_buy.unit_price * current_sale.quantity
                             current_buy.quantity -= current_sale.quantity
@@ -60,9 +68,11 @@ def calculate_total(groups):
                             balance += current_sale.unit_price * current_buy.quantity - current_buy.unit_price * current_buy.quantity
                             current_buy.quantity = current_sale.quantity
                             current_sale.quantity -= current_buy.quantity
-        for current_sale in groups[currency]["sales"]:
-            if current_sale.quantity > 0:
-                balance += current_sale.quantity * current_sale.unit_price
-                current_sale.quantity = 0
-    print(balance)
-    return balance
+        #for current_sale in groups[currency]["sales"]:
+        #    current_sale.quantity = float(current_sale.quantity)
+        #    if current_sale.quantity > 0:
+        #        balance += current_sale.quantity * current_sale.unit_price
+        #        current_sale.quantity = 0
+
+
+    return int(balance)

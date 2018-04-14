@@ -43,7 +43,7 @@ class Bittrex:
 
 
     def writeResult(self, trans):
-        with open("../backend/test.txt", "ab") as f:
+        with open("../backend/test.txt", "wb") as f:
             for tx in trans:
                 pickle.dump(tx, f)
 

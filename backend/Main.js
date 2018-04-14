@@ -5,7 +5,10 @@ xhttp.open("POST", "http://127.0.0.1:5000/", true);
 async function startCalculation()
 {
     xhttp.open("POST", "http://127.0.0.1:5000/", true);
-    xhttp.send("2017")
+    xhttp.send("2017");
+    await sleep(5000);
+    console.log("Sleep finished");
+    fetchResult();
 }
 
 async function invokePython(event)
@@ -34,16 +37,11 @@ async function invokePython(event)
             xhttp.send(content); // Sender filene som strenge til serveren
         };
     }
-
-    await sleep(5000);
-    console.log("Sleep finished");
-
-    fetchResult();
 }
 
 function fetchResult()
 {
-    fetch('../backend/test.txt')
+    fetch('../backend/result.txt')
         .then(response => response.text())
         .then(text => document.getElementById("income").innerText = "Estimert inntekt: " + text);
 }
