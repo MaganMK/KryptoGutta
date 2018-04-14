@@ -36,14 +36,14 @@ async function invokePython(event)
             */
             content = "" + exchange + "\n" + content;
 
-            xhttp.send(content); // Sender filene som strenge til serveren
+            xhttp.send(content); // Sender filene som strenger til serveren
         };
     }
 }
 
 function fetchResult()
 {
-    fetch('../backend/result.txt')
+    fetch('../results/result.txt')
         .then(response => response.text())
         .then(text => document.getElementById("income").innerText = "Estimert inntekt: " + text);
 }

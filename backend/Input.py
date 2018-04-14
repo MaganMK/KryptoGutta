@@ -1,5 +1,5 @@
-from backend.Bittrex import *
-from backend.Binance import *
+from backend.Exchanges.Bittrex import *
+from backend.Exchanges.Binance import *
 
 def handleInput(data):
     data = data.split("\n")

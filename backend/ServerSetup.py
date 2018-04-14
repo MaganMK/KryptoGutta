@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request
-from backend.MakeGroups import handleInput
+from backend.Input import handleInput
 from backend.Calculator import *
 
 app = Flask(__name__)

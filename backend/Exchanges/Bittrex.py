@@ -1,5 +1,5 @@
 from backend.Transaction import *
-from backend.Exchange import Exchange
+from backend.Exchanges.Exchange import Exchange
 
 class Bittrex(Exchange):
 
@@ -20,7 +20,6 @@ class Bittrex(Exchange):
                 type = lines[2]
                 currencies = lines[1].split("-")
                 date = self.create_date(lines[8])
-                print(date)
                 if (type == "LIMIT_SELL"):
                     buy_transaction = Transaction(currencies[0], lines[6], date, False)
                     sell_transaction = Transaction(currencies[1], lines[3], date, True)

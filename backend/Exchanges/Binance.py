@@ -1,5 +1,5 @@
 from backend.Transaction import *
-from backend.Exchange import Exchange
+from backend.Exchanges.Exchange import Exchange
 
 class Binance(Exchange):
 
@@ -19,7 +19,6 @@ class Binance(Exchange):
                 type = lines[2]
                 currencies = self.get_trading_pair(lines[1])
                 date = self.create_date(lines[0])
-                #self, name, quantity, date, is_sale
                 if (type == "SELL"):
                     sell_transaction = Transaction(currencies[0], lines[4], date, True)
                     buy_transaction = Transaction(currencies[1], lines[5], date, False)
@@ -38,6 +37,5 @@ class Binance(Exchange):
         else:
             result.append(line[:3])
             result.append(line[3:])
-        print(result)
         return result
 

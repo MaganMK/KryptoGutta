@@ -10,13 +10,13 @@ def calculate(year):
 
 
 def write_to_result_file(result):
-    writer = open("../backend/result.txt", "w")
+    writer = open("../results/result.txt", "w")
     writer.write(str(result) + " kr")
     writer.close()
 
 
 def read_file():
-    with open("../backend/test.txt", "rb") as f:
+    with open("../results/transactions.txt", "rb") as f:
         trans = []
         while 1:
             try:
