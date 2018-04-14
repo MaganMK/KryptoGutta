@@ -1,6 +1,7 @@
 from backend.Transaction import *
 from datetime import datetime
 import pickle
+from dateutil import parser
 
 class Bittrex:
 
@@ -36,10 +37,12 @@ class Bittrex:
 
 
     def create_date(self, date_string):
-        try:
-            return datetime.strptime(date_string, "%m/%d/%Y %I:%M:%S %p")
-        except ValueError:
-            return datetime.strptime(date_string, "%m/%d/%Y %H:%M")
+        return parser.parse(date_string)
+        #print(date_string)
+        #try:
+        #    return datetime.strptime(date_string, "%m/%d/%Y %I:%M:%S %p")
+        #except ValueError:
+        #    return datetime.strptime(date_string, "%m/%d/%Y %H:%M")
 
 
     def write_result(self, trans):

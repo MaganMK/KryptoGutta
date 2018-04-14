@@ -2,7 +2,6 @@ import pickle
 
 
 def calculate(year):
-    year = year.decode("utf-8")
     transactions = read_file()
     groups = group_transactions(transactions, year)
     groups = sort_on_date(groups)
@@ -73,4 +72,5 @@ def calculate_total(groups):
         #    if current_sale.quantity > 0:
         #        balance += current_sale.quantity * current_sale.unit_price
         #        current_sale.quantity = 0
+    print(int(balance))
     return int(balance)
