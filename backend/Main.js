@@ -10,6 +10,7 @@ async function invokePython(event)
 
     // Henter ut opplastede filer
     let exchange = event.target.id;
+    console.log(exchange);
     let file = document.getElementById(exchange);
     if(file.files.length)
     {
@@ -18,6 +19,10 @@ async function invokePython(event)
         reader.onload= function(e)
         {
             let content = e.target.result;
+            if(exchange == "bittrex")
+            {
+                content = "bittrex\n" + content;
+            }
             xhttp.send(content); // Sender filene som strenge til serveren
         };
     }
