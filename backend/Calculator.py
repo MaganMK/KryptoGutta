@@ -1,4 +1,3 @@
-
 import pickle
 
 
@@ -68,11 +67,10 @@ def calculate_total(groups):
                             balance += current_sale.unit_price * current_buy.quantity - current_buy.unit_price * current_buy.quantity
                             current_buy.quantity = current_sale.quantity
                             current_sale.quantity -= current_buy.quantity
+        #Legger sammen alle salg som ikke finner matchende kjøp
         #for current_sale in groups[currency]["sales"]:
         #    current_sale.quantity = float(current_sale.quantity)
         #    if current_sale.quantity > 0:
         #        balance += current_sale.quantity * current_sale.unit_price
         #        current_sale.quantity = 0
-
-
     return int(balance)

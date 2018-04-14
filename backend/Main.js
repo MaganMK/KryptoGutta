@@ -5,7 +5,9 @@ xhttp.open("POST", "http://127.0.0.1:5000/", true);
 async function startCalculation()
 {
     xhttp.open("POST", "http://127.0.0.1:5000/", true);
-    xhttp.send("2017");
+    var dropdown = document.getElementById("year-selector");
+    let year = dropdown.options[a.selectedIndex].value;
+    xhttp.send(year);
     await sleep(5000);
     console.log("Sleep finished");
     fetchResult();

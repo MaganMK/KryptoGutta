@@ -5,9 +5,9 @@ import pickle
 class Bittrex:
 
     def __init__(self, data):
-        self.getTransactions(data)
+        self.save_transactions(data)
 
-    def getTransactions(self, data):
+    def save_transactions(self, data):
         #0 id = 8a9bf807 - f899 - 4c07 - 95b8 - 9d312ef1e192,\
         #1 exchange = BTC - ADA
         #2 type = LIMIT_SELL
@@ -32,8 +32,8 @@ class Bittrex:
                     buy_transaction = Transaction(currencies[1], lines[3], date, False)
                 transactions.append(sell_transaction)
                 transactions.append(buy_transaction)
+        self.write_result(transactions)
 
-        self.writeResult(transactions)
 
     def create_date(self, date_string):
         try:
@@ -42,12 +42,8 @@ class Bittrex:
             return datetime.strptime(date_string, "%m/%d/%Y %H:%M")
 
 
-    def writeResult(self, trans):
+    def write_result(self, trans):
+        print("kom hit")
         with open("../backend/test.txt", "wb") as f:
             for tx in trans:
                 pickle.dump(tx, f)
-
-
-
-
-

@@ -1,4 +1,3 @@
-
 from backend.Bittrex import *
 
 def handleInput(data):
@@ -6,9 +5,10 @@ def handleInput(data):
 
     data = data.split("\n")
 
-
-    if(data[0] == "bittrex"):
-        bittrexTrans = Bittrex(data[2:])
+    exchange = data[0]
+    if(exchange == "bittrex"):
+        Bittrex(data[2:])
+    #Legger til flere exchanges her
 
 
 
