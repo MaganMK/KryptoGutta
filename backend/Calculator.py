@@ -32,7 +32,6 @@ def group_transactions(transactions, year):
     for tx in transactions:
         if tx.name not in groups:
             groups[tx.name] = {"sales": [], "buys": []}
-
         if tx.is_sale and tx.date.year == int(year):
             groups[tx.name]["sales"].append(tx)
         elif not tx.is_sale:
@@ -44,7 +43,6 @@ def sort_on_date(groups):
     for name in groups.keys():
         groups[name]["sales"].sort(key = lambda tx : tx.date)
         groups[name]["buys"].sort(key=lambda tx: tx.date)
-
     return groups
 
 
@@ -55,7 +53,6 @@ def calculate_total(groups):
             for current_buy in groups[currency]["buys"]:
                 current_sale.quantity = float(current_sale.quantity)
                 if current_sale.quantity > 0:
-
                     if current_buy.date <= current_sale.date:
                         current_buy.quantity = float(current_buy.quantity)
                         if current_buy.quantity >= current_sale.quantity:

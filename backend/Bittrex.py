@@ -1,12 +1,7 @@
 from backend.Transaction import *
-from datetime import datetime
-import pickle
-from dateutil import parser
+from backend.Exchange import Exchange
 
-class Bittrex:
-
-    def __init__(self, data):
-        self.save_transactions(data)
+class Bittrex(Exchange):
 
     def save_transactions(self, data):
         #0 id = 8a9bf807 - f899 - 4c07 - 95b8 - 9d312ef1e192,\
@@ -25,6 +20,7 @@ class Bittrex:
                 type = lines[2]
                 currencies = lines[1].split("-")
                 date = self.create_date(lines[8])
+                print(date)
                 if (type == "LIMIT_SELL"):
                     buy_transaction = Transaction(currencies[0], lines[6], date, False)
                     sell_transaction = Transaction(currencies[1], lines[3], date, True)
@@ -36,17 +32,10 @@ class Bittrex:
         self.write_result(transactions)
 
 
-    def create_date(self, date_string):
-        return parser.parse(date_string)
+    #def create_date(self, date_string):
+        #return parser.parse(date_string)
         #print(date_string)
         #try:
         #    return datetime.strptime(date_string, "%m/%d/%Y %I:%M:%S %p")
         #except ValueError:
         #    return datetime.strptime(date_string, "%m/%d/%Y %H:%M")
-
-
-    def write_result(self, trans):
-        print("kom hit")
-        with open("../backend/test.txt", "wb") as f:
-            for tx in trans:
-                pickle.dump(tx, f)

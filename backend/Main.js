@@ -1,5 +1,3 @@
-
-
 async function startCalculation()
 {
     let xhttp = new XMLHttpRequest();
@@ -30,10 +28,14 @@ async function invokePython(event)
         reader.onload= function(e)
         {
             let content = e.target.result;
+            /*
             if(exchange == "bittrex")
             {
                 content = "bittrex\n" + content;
             }
+            */
+            content = "" + exchange + "\n" + content;
+
             xhttp.send(content); // Sender filene som strenge til serveren
         };
     }
@@ -51,4 +53,5 @@ function sleep(ms) {
 }
 
 document.getElementById("bittrex").addEventListener("change", invokePython, false);
+document.getElementById("binance").addEventListener("change", invokePython, false);
 document.getElementById("submit-btn").addEventListener("click", startCalculation, false);
