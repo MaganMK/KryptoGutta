@@ -1,4 +1,3 @@
-
 import requests
 import calendar
 import json
