@@ -1,12 +1,20 @@
 
+let xhttp = new XMLHttpRequest();
+xhttp.open("POST", "http://127.0.0.1:5000/", true);
 
+async function startCalculation()
+{
+    xhttp.open("POST", "http://127.0.0.1:5000/", true);
+    xhttp.send("2017")
+}
 
 async function invokePython(event)
 {
 
+
+
     // Setter opp conection med serveren
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "http://127.0.0.1:5000/", true);
+
 
     // Henter ut opplastede filer
     let exchange = event.target.id;
@@ -47,4 +55,4 @@ function sleep(ms) {
 
 
 document.getElementById("bittrex").addEventListener("change", invokePython, false);
-document.getElementById("submit-btn").addEventListener("click", invokePython, false);
+document.getElementById("submit-btn").addEventListener("click", startCalculation, false);
