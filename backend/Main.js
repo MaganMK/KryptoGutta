@@ -54,4 +54,5 @@ function sleep(ms) {
 
 document.getElementById("bittrex").addEventListener("change", invokePython, false);
 document.getElementById("binance").addEventListener("change", invokePython, false);
+document.getElementById("coinbase").addEventListener("change", invokePython, false);
 document.getElementById("submit-btn").addEventListener("click", startCalculation, false);

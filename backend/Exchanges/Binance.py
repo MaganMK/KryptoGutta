@@ -1,5 +1,5 @@
-from backend.Transaction import *
 from backend.Exchanges.Exchange import Exchange
+from backend.Transaction import *
 
 class Binance(Exchange):
 

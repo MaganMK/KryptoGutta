@@ -1,13 +1,16 @@
 from backend.Exchanges.Bittrex import *
 from backend.Exchanges.Binance import *
+from backend.Exchanges.Coinbase import *
 
 def handleInput(data):
     data = data.split("\n")
     exchange = data[0]
-    if(exchange == "bittrex"):
+    if exchange == "bittrex":
         Bittrex(data[2:])
-    elif(exchange == "binance"):
+    elif exchange == "binance":
         Binance(data[2:])
+    elif exchange == "coinbase":
+        Coinbase(data[6:])
     #Legger til flere exchanges her
 
 
