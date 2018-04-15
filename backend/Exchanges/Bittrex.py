@@ -21,11 +21,11 @@ class Bittrex(Exchange):
                 currencies = lines[1].split("-")
                 date = self.create_date(lines[8])
                 if (type == "LIMIT_SELL"):
-                    buy_transaction = Transaction(currencies[0], lines[6], date, False)
-                    sell_transaction = Transaction(currencies[1], lines[3], date, True)
+                    buy_transaction = Transaction(currencies[0], lines[6], date, False, "bittrex")
+                    sell_transaction = Transaction(currencies[1], lines[3], date, True, "bittrex")
                 else:
-                    sell_transaction = Transaction(currencies[0], lines[6], date, True)
-                    buy_transaction = Transaction(currencies[1], lines[3], date, False)
+                    sell_transaction = Transaction(currencies[0], lines[6], date, True, "bittrex")
+                    buy_transaction = Transaction(currencies[1], lines[3], date, False, "bittrex")
                 transactions.append(sell_transaction)
                 transactions.append(buy_transaction)
         self.write_result(transactions)

@@ -4,13 +4,14 @@ import json
 
 class Transaction:
 
-    def __init__(self, name, quantity, date, is_sale):
+    def __init__(self, name, quantity, date, is_sale, site):
         self.name = name
         self.quantity = float(quantity)
         self.is_sale = is_sale
         self.date = date
         self.unit_price = self.calculate_unit_price()
-        self.totalPrice = float(self.quantity)*float(self.unit_price)
+        self.total_price = float(self.quantity)*float(self.unit_price)
+        self.site = site
 
     def calculate_unit_price(self):
         timestamp = calendar.timegm(self.date.utctimetuple())
@@ -20,4 +21,6 @@ class Transaction:
         return res[self.name]["NOK"]
 
     def __str__(self):
-        return "Name: " + self.name + "  Quantity: " + str(self.quantity) + "  Date: " + str(self.date) + "  is_sale: " + str(self.is_sale) + "  unit_price: " + str(self.unit_price)
+        sale = "sell" if self.is_sale else "buy"
+        return "Name: " + self.name + " " + sale + "  Qty: " + str(self.quantity) + "  Date: " + str(self.date) + "  Unit price: " + str(self.unit_price) + " Total price: " + str(self.total_price) + " exchange: " + self.site
+

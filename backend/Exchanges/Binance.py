@@ -20,11 +20,11 @@ class Binance(Exchange):
                 currencies = self.get_trading_pair(lines[1])
                 date = self.create_date(lines[0])
                 if (type == "SELL"):
-                    sell_transaction = Transaction(currencies[0], lines[4], date, True)
-                    buy_transaction = Transaction(currencies[1], lines[5], date, False)
+                    sell_transaction = Transaction(currencies[0], lines[4], date, True, "binance")
+                    buy_transaction = Transaction(currencies[1], lines[5], date, False, "binance")
                 else:
-                    buy_transaction = Transaction(currencies[0], lines[4], date, False)
-                    sell_transaction = Transaction(currencies[1], lines[5], date, True)
+                    buy_transaction = Transaction(currencies[0], lines[4], date, False, "binance")
+                    sell_transaction = Transaction(currencies[1], lines[5], date, True, "binance")
                 transactions.append(sell_transaction)
                 transactions.append(buy_transaction)
         self.write_result(transactions)

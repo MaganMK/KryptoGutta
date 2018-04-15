@@ -13,6 +13,6 @@ class Exchange:
         return parser.parse(date_string)
 
     def write_result(self, transactions):
-        with open("../results/transactions.txt", "wb") as f:
+        with open("../results/transactions.txt", "ab") as f:
             for tx in transactions:
                 pickle.dump(tx, f)

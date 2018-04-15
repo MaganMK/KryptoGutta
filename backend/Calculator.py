@@ -1,11 +1,17 @@
 import pickle
+import calendar
+import requests
+import json
+from dateutil import parser
 
 
 def calculate(year):
     transactions = read_file()
     groups = group_transactions(transactions)
     groups = sort_on_date(groups)
+    year_balance = get_total_balance(groups, year)
     result = calculate_total(groups, year)
+    print("yrb: " + str(year_balance))
     write_to_result_file(result)
 
 
@@ -64,7 +70,7 @@ def calculate_total(groups, year):
                             profit += current_sale.unit_price * current_buy.quantity - current_buy.unit_price * current_buy.quantity
                             current_buy.quantity = current_sale.quantity
                             current_sale.quantity -= current_buy.quantity
-            if current_sale.date.year == year:
+            if current_sale.date.year == int(year):
                 balance += profit
         #Legger sammen alle salg som ikke finner matchende kjøp
         #for current_sale in groups[currency]["sales"]:
@@ -72,5 +78,31 @@ def calculate_total(groups, year):
         #    if current_sale.quantity > 0:
         #        balance += current_sale.quantity * current_sale.unit_price
         #        current_sale.quantity = 0
-    print(int(balance))
+    print("income: " + str(int(balance)))
     return int(balance)
+
+
+def get_total_balance(groups, year):
+    date_string = "12/31/" + str(year) + " 23:59"
+    end_year_date = parser.parse(date_string)
+    balance = 0
+    for currency in groups.keys():
+        qty = 0
+        for buy in groups[currency]["buys"]:
+            if buy.date <= end_year_date:
+                qty += buy.quantity
+        for sale in groups[currency]["sales"]:
+            if sale.date <= end_year_date:
+                qty -= sale.quantity
+        currency_balance = calculate_unit_price(end_year_date, currency) * qty
+        if currency_balance > 0:
+            balance += currency_balance
+    return balance
+
+
+def calculate_unit_price(date, currency):
+    timestamp = calendar.timegm(date.utctimetuple())
+    req = requests.get("https://min-api.cryptocompare.com/data/pricehistorical" +
+                       "?fsym=" + currency + "&tsyms=NOK&ts=" + str(timestamp))
+    res = json.loads(req.text)
+    return res[currency]["NOK"]
