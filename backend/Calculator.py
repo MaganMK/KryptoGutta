@@ -3,7 +3,6 @@ import calendar
 import requests
 import json
 from dateutil import parser
-from datetime import datetime
 
 
 def calculate(year):
@@ -85,10 +84,6 @@ def calculate_total(groups, year):
 def get_total_balance(groups, year):
     date_string = "12/31/" + str(year) + " 23:59"
     end_year_date = parser.parse(date_string)
-    now = datetime.now()
-    #Finner nåverdi hvis slutten av året ikke har vært enda
-    if end_year_date > now:
-        end_year_date = now
     balance = 0
     for currency in groups.keys():
         qty = 0
