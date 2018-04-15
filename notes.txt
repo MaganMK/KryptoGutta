@@ -1,11 +1,5 @@
 Praktisk om appen:
-- Appen funker ikke med rebrands (eksempel antshares -> NEO)
-- Må linke til cryptocompare.com på nettsiden
 - Kan verken garantere nøyaktighet eller at api'et henter korrekte priser
-- Hvis appen ikke finner et tidligere kjøp når den skal regne ut gevinsten på et salg, vil hele salgsummen
-  regnes som gevinst?
 
 Ting som må gjøres:
 - Ordne nettsiden
-- Regne ut total verdi ved årsslutt
-- Regne ut tap og gevinst, ikke bare summen
