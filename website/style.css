@@ -82,10 +82,14 @@ select {
     height: 50px;
     text-align: center;
     text-indent: 140px;
+    border-color: #008927;
+    background-color: #e0ffd8;
+
 }
 
 select:hover {
     cursor: pointer;
+    background-color: white;
 }
 
 footer {
