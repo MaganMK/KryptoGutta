@@ -16,7 +16,7 @@ async function startCalculation()
     var dropdown = document.getElementById("year-selector");
     let year = dropdown.options[dropdown.selectedIndex].value;
     xhttp.send(year);
-    await sleep(5000);
+    await sleep(10000);
     console.log("Sleep finished");
     //fetchResult();
     readResultFile();
@@ -45,13 +45,15 @@ async function invokePython(event)
     }
 }
 
+// Denne leser filen til riktig tid
 function fetchResult()
 {
     fetch('../results/result.txt')
-        .then(response => response.text().split(","))
+        .then(response => response.text())
         .then(text => document.getElementById("filled").innerText = "Estimert inntekt: " + text);
 }
 
+// Denne leser filen for tidlig
 function readResultFile()
 {
     let url = "../results/result.txt";
@@ -94,9 +96,9 @@ function readResultFile()
                 let year = dropdown.options[dropdown.selectedIndex].value;
                 document.getElementById("balance-header").innerText = "Balanse 31.12." + year;
 
-                document.getElementById("filled").innerText = res[0];
-                document.getElementById("unfilled").innerText = res[1];
-                document.getElementById("balance").innerText = res[2];
+                document.getElementById("filled").innerText = "\n\n\n" + res[0] + " kr";
+                document.getElementById("unfilled").innerText = "\n\n\n" + res[1] + " kr";
+                document.getElementById("balance").innerText = "\n\n\n" + res[2] + " kr";
             }
         }
     }
@@ -110,4 +112,5 @@ function sleep(ms) {
 document.getElementById("bittrex").addEventListener("change", invokePython, false);
 document.getElementById("binance").addEventListener("change", invokePython, false);
 document.getElementById("coinbase").addEventListener("change", invokePython, false);
+
 document.getElementById("submit-btn").addEventListener("click", startCalculation, false);
