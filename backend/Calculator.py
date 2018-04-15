@@ -3,6 +3,7 @@ import calendar
 import requests
 import json
 from dateutil import parser
+from datetime import datetime
 
 
 def calculate(year):
@@ -12,7 +13,6 @@ def calculate(year):
 
     year_balance = get_total_balance(groups, year)
     filled, unfilled = calculate_total(groups, year)
-
     results = [filled, unfilled, year_balance]
 
     write_to_result_file(results)
@@ -77,19 +77,18 @@ def calculate_total(groups, year):
                             current_sale.quantity -= current_buy.quantity
             if current_sale.date.year == int(year):
                 filled += profit
-
-        #Legger sammen alle salg som ikke finner matchende kjøp
-        for rest_sale in groups[currency]["sales"]:
-            rest_sale.quantity = float(rest_sale.quantity)
-            if rest_sale.quantity > 0 and rest_sale.date.year == int(year):
-                unfilled += rest_sale.quantity * rest_sale.unit_price
-                rest_sale.quantity = 0
+                unfilled += current_sale.quantity * current_sale.unit_price
+                current_sale.quantity = 0
     return int(filled), int(unfilled)
 
 
 def get_total_balance(groups, year):
     date_string = "12/31/" + str(year) + " 23:59"
     end_year_date = parser.parse(date_string)
+    now = datetime.now()
+    #Finner nåverdi hvis slutten av året ikke har vært enda
+    if end_year_date > now:
+        end_year_date = now
     balance = 0
     for currency in groups.keys():
         qty = 0

@@ -54,7 +54,7 @@ input[type="file"] {
 }
 
 #submit-btn:hover {
-    background-color: white;
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.5);
 }
 
 .box {
@@ -85,7 +85,7 @@ select {
 
 select:hover {
     cursor: pointer;
-    background-color: white;
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.5);
 }
 
 footer {
