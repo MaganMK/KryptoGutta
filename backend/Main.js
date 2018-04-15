@@ -1,11 +1,13 @@
-/*
+
 var box1 = document.getElementById("box1");
 var box2 = document.getElementById("box2");
 var box3 = document.getElementById("box3")
+/*
 box1.style.display = "none";
 box2.style.display = "none";
 box3.style.display = "none";
 */
+
 
 async function startCalculation()
 {
@@ -69,6 +71,24 @@ function readResultFile()
                 box2.style.display = "block";
                 box3.style.display = "block";
                 */
+                let green = "#c5ffc4";
+                let greenBorder = "#78d877";
+                let red = "#ff8c93";
+                let redBorder = "#ed444f";
+                let box1Color = res[0] >= 0 ? green : red;
+                let box1Border = res[0] >= 0 ? greenBorder : redBorder;
+                let box2Color = res[1] >= 0 ? green : red;
+                let box2Border = res[1] >= 0 ? greenBorder : redBorder;
+
+                box1.style.backgroundColor = box1Color;
+                box1.style.border = "solid " + box1Border;
+
+                box2.style.backgroundColor = box2Color;
+                box2.style.border = "solid " + box2Border;
+
+                box3.style.backgroundColor = green;
+                box3.style.border = "solid " + greenBorder;
+
 
                 let dropdown = document.getElementById("year-selector");
                 let year = dropdown.options[dropdown.selectedIndex].value;
