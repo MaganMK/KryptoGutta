@@ -47,6 +47,7 @@
             <div class = "wrapper">
             <label for = "bittrex" id = "bittre" class="btn btn-default file-container">
             Bittrex<input type="file" id="bittrex" name="bittrex" single>
+            </label>
             </div>
         </div>
         <div class = "col">
@@ -89,14 +90,30 @@
         <div class = "col"></div>
     </div>
     <div class = "row">
-        <div class = "col"></div>
         <div class = "col">
-            <div class = "wrapper">
-            <h3 id = "income" class = "centered-text">Estimert inntekt: </h3>
-            <p id = "test"></p>
+            <div class = "wrapper" id = "box1">
+                <div class = "box">
+                    <h4>Inntekt</h4>
+                    <h3 id = "filled" class = "centered-text"></h3>
+                </div>
             </div>
         </div>
-        <div class = "col"></div>
+        <div class = "col">
+            <div class = "wrapper" id = "box2">
+                <div class = "box">
+                    <h4>Inntekt for salg uten kjøp</h4>
+                    <h3 id = "unfilled" class = "centered-text"></h3>
+                </div>
+            </div>
+        </div>
+        <div class = "col">
+            <div class = "wrapper" id = "box3">
+                <div class = "box">
+                    <h4 id = "balance-header">Balanse</h4>
+                    <h3 id = "balance" class = "centered-text"></h3>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

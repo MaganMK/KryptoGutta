@@ -9,15 +9,19 @@ def calculate(year):
     transactions = read_file()
     groups = group_transactions(transactions)
     groups = sort_on_date(groups)
+
     year_balance = get_total_balance(groups, year)
-    result = calculate_total(groups, year)
-    print("yrb: " + str(year_balance))
-    write_to_result_file(result)
+    filled, unfilled = calculate_total(groups, year)
+
+    results = [filled, unfilled, year_balance]
+
+    write_to_result_file(results)
 
 
-def write_to_result_file(result):
+def write_to_result_file(results):
     writer = open("../results/result.txt", "w")
-    writer.write(str(result) + " kr")
+    res_str = str(results[0]) + "," + str(results[1]) + "," + str(results[2])
+    writer.write(res_str)
     writer.close()
 
 
@@ -53,7 +57,7 @@ def sort_on_date(groups):
 
 
 def calculate_total(groups, year):
-    balance = 0
+    filled = 0
     for currency in groups.keys():
         for current_sale in groups[currency]["sales"]:
             profit = 0
@@ -71,15 +75,16 @@ def calculate_total(groups, year):
                             current_buy.quantity = current_sale.quantity
                             current_sale.quantity -= current_buy.quantity
             if current_sale.date.year == int(year):
-                balance += profit
+                filled += profit
+
         #Legger sammen alle salg som ikke finner matchende kjøp
-        #for current_sale in groups[currency]["sales"]:
-        #    current_sale.quantity = float(current_sale.quantity)
-        #    if current_sale.quantity > 0:
-        #        balance += current_sale.quantity * current_sale.unit_price
-        #        current_sale.quantity = 0
-    print("income: " + str(int(balance)))
-    return int(balance)
+        unfilled = 0
+        for current_sale in groups[currency]["sales"]:
+            current_sale.quantity = float(current_sale.quantity)
+            if current_sale.quantity > 0 and current_sale.date.year == int(year):
+                unfilled += current_sale.quantity * current_sale.unit_price
+                current_sale.quantity = 0
+    return int(filled), int(unfilled)
 
 
 def get_total_balance(groups, year):
@@ -97,7 +102,7 @@ def get_total_balance(groups, year):
         currency_balance = calculate_unit_price(end_year_date, currency) * qty
         if currency_balance > 0:
             balance += currency_balance
-    return balance
+    return int(balance)
 
 
 def calculate_unit_price(date, currency):

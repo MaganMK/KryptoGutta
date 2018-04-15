@@ -61,3 +61,17 @@ input[type="file"] {
 #submit-btn:hover {
     background-color: white;
 }
+
+.box {
+    margin-top: 40px;
+    background-color: lightgray;
+    width: 350px;
+    height: 350px;
+    border-radius: 15px;
+}
+
+.box h4 {
+    padding-top: 20px;
+    text-align: center;
+
+}
