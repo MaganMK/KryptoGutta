@@ -45,7 +45,6 @@ async function invokePython(event)
     }
 }
 
-// Denne leser filen til riktig tid
 function fetchResult()
 {
     fetch('../results/result.txt')
@@ -53,7 +52,6 @@ function fetchResult()
         .then(text => document.getElementById("filled").innerText = "Estimert inntekt: " + text);
 }
 
-// Denne leser filen for tidlig
 function readResultFile()
 {
     let url = "../results/result.txt";
