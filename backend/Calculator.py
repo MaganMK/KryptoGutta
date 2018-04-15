@@ -58,6 +58,7 @@ def sort_on_date(groups):
 
 def calculate_total(groups, year):
     filled = 0
+    unfilled = 0
     for currency in groups.keys():
         for current_sale in groups[currency]["sales"]:
             profit = 0
@@ -78,12 +79,11 @@ def calculate_total(groups, year):
                 filled += profit
 
         #Legger sammen alle salg som ikke finner matchende kjøp
-        unfilled = 0
-        for current_sale in groups[currency]["sales"]:
-            current_sale.quantity = float(current_sale.quantity)
-            if current_sale.quantity > 0 and current_sale.date.year == int(year):
-                unfilled += current_sale.quantity * current_sale.unit_price
-                current_sale.quantity = 0
+        for rest_sale in groups[currency]["sales"]:
+            rest_sale.quantity = float(rest_sale.quantity)
+            if rest_sale.quantity > 0 and rest_sale.date.year == int(year):
+                unfilled += rest_sale.quantity * rest_sale.unit_price
+                rest_sale.quantity = 0
     return int(filled), int(unfilled)
 
 

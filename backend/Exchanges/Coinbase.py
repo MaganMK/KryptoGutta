@@ -10,9 +10,9 @@ class Coinbase(Exchange):
         #1 balance
         #2 amount (antall enheter kjøpt av currency = 0.2262
         #3 currency = ETH
-        #4 amount (antall enheter av currency 1) = 34
-        #5 To
-        #6 notes = Bought 0.22623156 ETH for €52.00 EUR
+        #4 To
+        #5 Notes
+        #6
         #7
         #Timestamp, Balance, Amount, Currency, To, Notes, Instantly Exchanged,
         #Transfer Total, Transfer Total Currency, Transfer Fee, Transfer Fee Currency,
@@ -29,8 +29,8 @@ class Coinbase(Exchange):
             if (len(line) > 0):
                 lines = line.split(",")
                 #Sjekker om "transaksjonen" er en overføring, isåfall er lengden på notes 0?
-                if len(lines[6]) != 0:
-                    type = self.get_type(lines[6])
+                if self.is_transaction(lines[5]):
+                    type = self.get_type(lines[5])
                     date = self.create_date(lines[0])
                     currency = lines[3]
                     if (type == "SELL"):
@@ -47,6 +47,9 @@ class Coinbase(Exchange):
             return "BUY"
         else:
             return "SALE"
+
+    def is_transaction(self,notes):
+        return "bought" in notes.lower() or "sold" in notes
 
 
 
