@@ -1,11 +1,25 @@
 var txDiv = document.getElementById("tx-table-div");
 txDiv.style.display = "none";
+var selector = document.getElementById("year-selector");
+var calcBtn = document.getElementById("submit-btn");
+calcBtn.disabled = true;
+
+selector.addEventListener("change", function() {
+    let val = selector.options[selector.selectedIndex].value;
+    let validYears = ["2015", "2016", "2017", "2018"];
+    if (validYears.indexOf(val) >= 0) {
+        selector.style.backgroundColor = "#c5ffc4";
+        selector.style.border = "solid #78d877";
+        calcBtn.style.backgroundColor = "#c5ffc4";
+        calcBtn.style.border = "solid #78d877";
+        calcBtn.disabled = false;
+    }
+})
 
 function startCalculation()
 {
     document.body.style.cursor  = 'wait';
-    var dropdown = document.getElementById("year-selector");
-    let year = dropdown.options[dropdown.selectedIndex].value;
+    let year = selector.options[selector.selectedIndex].value;
 
    $.ajax({
         type: "POST",
