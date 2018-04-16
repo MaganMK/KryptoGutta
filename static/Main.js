@@ -3,9 +3,12 @@
 function startCalculation()
 {
 
+    var dropdown = document.getElementById("year-selector");
+    let year = dropdown.options[dropdown.selectedIndex].value;
+
    $.ajax({
         type: "POST",
-        data: JSON.stringify(2017, null, '\t'),
+        data: year,
         url: "/result",
         success: function(pyResult){
             let res = pyResult.result;
@@ -41,12 +44,9 @@ function startCalculation()
 
 }
 
-async function invokePython(event)
+function invokePython(event)
 {
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/newInput", true);
-
-    let exchange = event.target.id;
+     let exchange = event.target.id;
     let file = document.getElementById(exchange);
     if(file.files.length)
     {
@@ -56,9 +56,28 @@ async function invokePython(event)
         {
             let content = e.target.result;
             content = "" + exchange + "\n" + content;
-            xhttp.send(content); // Sender filene som strenger til serveren
+            console.log(content);
+                $.ajax({
+                    type: "POST",
+                    data: content,
+                    url: "/newInput",
+                    success: function(transactions){
+                        console.log(transactions.trans);
+
+                        for(let tx in transactions.trans)
+                        {
+                            var node = document.createElement("LI");
+                            let textNode = document.createTextNode(transactions.trans[tx]);
+                            node.appendChild(textNode);
+                            document.getElementById("transDiv").appendChild(node)
+                        }
+                    }
+
+                });
         };
     }
+
+
 }
 
 

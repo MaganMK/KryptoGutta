@@ -11,9 +11,13 @@ app.secret_key = 'kryptogutta'
 
 @app.route("/", methods=['GET', 'POST'])
 def begin():
-
+    global trans
+    trans = []
     return render_template("index.html")
 
+@app.route("/om.html",methods=['GET', 'POST'])
+def om():
+    return render_template("om.html")
 
 @app.route("/result", methods=['GET', 'POST'])
 def calculate_result():
@@ -39,16 +43,20 @@ def new_input():
     start = time.time()
     print("STARTER å håndtere trans: " + str(start))
 
-    data = request.data
+    data = request.get_data()
     data = data.decode("utf-8")
 
     global trans
     trans.extend(handleInput(data))
 
-    print(trans)
     print ("FERDIG å håndtere trans: " + str(time.time()) + "\nDet tok: " + str(time.time() - start))
 
-    return ""
+    result_string = []
+
+    for tx in trans:
+        result_string.append(str(tx))
+
+    return jsonify(trans = result_string)
 
 if __name__ == "__main__":
     app.run(debug=True)
