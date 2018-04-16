@@ -3,7 +3,7 @@ txDiv.style.display = "none";
 
 function startCalculation()
 {
-
+    document.body.style.cursor  = 'wait';
     var dropdown = document.getElementById("year-selector");
     let year = dropdown.options[dropdown.selectedIndex].value;
 
@@ -40,6 +40,7 @@ function startCalculation()
             document.getElementById("filled").innerText = "\n\n\n" + res[0] + " kr";
             document.getElementById("unfilled").innerText = "\n\n\n" + res[1] + " kr";
             document.getElementById("balance").innerText = "\n\n\n" + res[2] + " kr";
+            document.body.style.cursor  = 'default';
         }
     });
 
@@ -51,6 +52,7 @@ function invokePython(event)
     var fileInput = document.getElementById(exchange.substring(0,exchange.length-1));
     fileInput.style.backgroundColor = "#c6e9ff";
     fileInput.style.borderColor = "#79ccff";
+    document.body.style.cursor  = 'wait';
     let file = document.getElementById(exchange);
     if(file.files.length)
     {
@@ -91,6 +93,7 @@ function invokePython(event)
                         }
                         fileInput.style.backgroundColor = "#e0ffd8";
                         fileInput.style.borderColor = "#008927";
+                        document.body.style.cursor  = 'default';
                     }
                 });
         };
