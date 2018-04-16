@@ -21,7 +21,7 @@ def calculate_result():
     print("STARTER å kalkulere resultat: " + str(start))
 
     data = request.get_data()
-
+    data = data.decode("utf-8")
     global trans
     result = calculate(data, trans)
 
