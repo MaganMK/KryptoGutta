@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kryptokalkulator</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Alle scripts -->
+    <script src = "../static/Main.js" type="module"></script>
+
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+<div class="row">
+    <div id = "header" class="col">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Kryptokalkulator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Kalkulator<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="om.html">Om</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class = "row">
+    <div class = "col wrapper" id = "info">
+        <div id = "info-wrapper">
+            <h4>Velkommen</h4>
+            <p></p>
+            <p>Målet med denne nettsiden er å gjøre det enkelt for deg å føre inntekt og formue av kryptobeholdningen din.</p>
+            <p>I følge <a href = "https://www.skatteetaten.no/bedrift-og-organisasjon/rapportering-og-bransjer/bransjer-med-egne-regler/internett/skatte--og-merverdiavgiftsmessig-behandling-av-bitcoins-og-andre-virtuelle-valutaer/" target="_blank">Skatteetaten</a> er hver transaksjon mellom to kryptovalutaer realisering av gevinst eller tap.</p>
+            <p>Vi fraskriver oss alt ansvar for korrektheten av resultatet kalkulatoren gir, og råder deg til å kun bruke resultatet som et estimat.</p>
+            <p>Les mer om hvordan kalkulatoren fungerer og hvordan du bruker den <a href = "om.html">her.</a></p>
+        </div>
+    </div>
+</div>
+<form method="post" enctype="multipart/form-data">
+    <div class = "row">
+        <div class = "col">
+            <div class = "wrapper">
+            <label for = "bittrex" id = "bittre" class="btn btn-default file-container">
+            Bittrex<input type="file" id="bittrex" name="bittrex" single>
+            </label>
+            </div>
+        </div>
+        <div class = "col">
+            <div class = "wrapper">
+                <label for = "binance" id = "binanc" class="btn btn-default file-container">
+                    Binance<input type="file" id="binance" name="binance" single hidden>
+                </label>
+            </div>
+        </div>
+        <div class = "col">
+            <div class = "wrapper">
+            <label for = "coinbase" id = "coinbas" class="btn btn-default file-container">
+                Coinbase<input type="file" id="coinbase" name="coinbase" single hidden>
+            </label>
+            </div>
+        </div>
+    </div>
+</form>
+    <div class = "row">
+        <div class = "col"></div>
+            <div class = "col">
+                <div class = "wrapper">
+                     <select id="year-selector">
+                            <option value="" disabled selected>Skatteår</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                     </select>
+                </div>
+            </div>
+        <div class = "col"></div>
+    </div>
+    <div class = "row">
+        <div class = "col"></div>
+        <div class = "col">
+            <div class = "wrapper">
+                <button id = "submit-btn" class = "btn btn-block">Regn ut</button>
+            </div>
+        </div>
+        <div class = "col"></div>
+    </div>
+    <div class = "row">
+        <div class = "col">
+            <div class = "wrapper">
+                <div class = "box" id = "box1">
+                    <h5>Inntekt</h5>
+                    <h2 id = "filled" class = "centered-text"></h2>
+                </div>
+            </div>
+        </div>
+        <div class = "col">
+            <div class = "wrapper" >
+                <div class = "box" id = "box2">
+                    <h5>Inntekt for salg uten kjøp</h5>
+                    <h2 id = "unfilled" class = "centered-text"></h2>
+                </div>
+            </div>
+        </div>
+        <div class = "col">
+            <div class = "wrapper">
+                <div class = "box" id = "box3">
+                    <h5 id = "balance-header">Balanse</h5>
+                    <h2 id = "balance" class = "centered-text"></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+<footer>
+    <p><br><br>Laget av Magnus Midtbø Kristiansen og Sindre Aubert</p>
+    <p>Priser er basert på <a href = "https://www.cryptocompare.com/api/#" target="_blank">CryptoCompares</a> API</p>
+</footer>
+</body>
+</html>

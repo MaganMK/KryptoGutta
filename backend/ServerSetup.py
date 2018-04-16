@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request
-from backend.MakeGroups import handleInput
+from backend.Input import handleInput
 from backend.Calculator import *
 
 app = Flask(__name__)
@@ -8,12 +8,11 @@ app = Flask(__name__)
 @app.route("/", methods=['GET','POST', 'OPTIONS'])
 def begin():
     data = request.data
+    data = data.decode("utf-8")
     if(len(data) == 4):
         calculate(data)
     else:
         handleInput(data)
-
-
     return "OK"
 
 
