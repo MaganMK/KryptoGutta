@@ -8,6 +8,7 @@ import time
 app = Flask(__name__)
 app.secret_key = 'kryptogutta'
 
+trans = []
 
 @app.route("/", methods=['GET', 'POST'])
 def begin():
@@ -33,9 +34,6 @@ def calculate_result():
     print("FERDIG å kalkulere resultat: " + str(time.time()) + "\nDet tok: " + str(time.time() - start))
 
     return jsonify(result = result)
-
-trans = []
-
 
 @app.route("/newInput", methods=['GET', 'POST'])
 def new_input():

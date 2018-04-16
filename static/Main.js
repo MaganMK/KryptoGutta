@@ -66,11 +66,19 @@ function invokePython(event)
                     data: content,
                     url: "/newInput",
                     success: function(transactions){
+                        $("#transaction-table tr").remove();
+                        let table = document.getElementById("transaction-table");
+                        let header = ["Valuta", "Dato", "Kjøp/Salg", "Kvantitet", "Enhetspris", "Totalpris", "Exchange"];
+                        let row1 = table.insertRow(0);
+                        row1.style = "font-weight: bold;";
+                        for (let i = 0; i < header.length; i++) {
+                            let cell = row1.insertCell(i);
+                            cell.innerText = header[i];
+                        }
                         txDiv.style.display = "block";
                         let txCount = document.getElementById("tx-count");
                         let count = transactions.trans.length;
                         txCount.innerText = "Registrerte transaksjoner: " + count;
-                        let table = document.getElementById("transaction-table");
                         for(let i in transactions.trans)
                         {
                             let lines = transactions.trans[i].split(",");
