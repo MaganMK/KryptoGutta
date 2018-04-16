@@ -16,11 +16,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <!-- Alle scripts -->
-    <script src = "../backend/Main.js" type="module"></script>
+    <script src = "../static/Main.js" type="module"></script>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
 </head>
 <body>
+<a href="{{ url_for('begin') }}">
 <div class="row">
     <div id = "header" class="col">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,12 +43,12 @@
         </nav>
     </div>
 </div>
-<form method="post" enctype="multipart/form-data">
+<form method = "post" enctype="multipart/form-data">
     <div class = "row">
         <div class = "col">
             <div class = "wrapper">
             <label for = "bittrex" id = "bittre" class="btn btn-default file-container">
-            Bittrex<input type="file" id="bittrex" name="bittrex" single>
+            Bittrex<input type="file" id="bittrex" name="bittrex" single >
             </div>
         </div>
         <div class = "col">
@@ -69,7 +71,7 @@
         <div class = "col"></div>
         <div class = "col">
             <div class = "wrapper">
-                <button id = "submit-btn" class = "btn btn-block">Calculate</button>
+                <button type="submit" value="2017" id = "submit-btn" class = "btn btn-block">Calculate</button>
             </div>
         </div>
         <div class = "col"></div>
@@ -84,5 +86,7 @@
         </div>
         <div class = "col"></div>
     </div>
+    </a>
 </body>
+
 </html>

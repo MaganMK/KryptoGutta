@@ -1,5 +1,5 @@
 
-from backend.Bittrex import *
+from backend.Exchanges.Bittrex import *
 
 def handleInput(data):
     data = data.decode("utf-8")

@@ -1,24 +1,23 @@
 
 import pickle
 
+def calculate(year, transactions):
 
-def calculate(year):
-    year = year.decode("utf-8")
-    transactions = read_file()
     groups = group_transactions(transactions, year)
     groups = sort_on_date(groups)
     result = calculate_total(groups)
-    write_to_result_file(result)
+    return result
+
 
 
 def write_to_result_file(result):
-    writer = open("../backend/result.txt", "w")
+    writer = open("backend/result.txt", "w")
     writer.write(str(result) + " kr")
     writer.close()
 
 
 def read_file():
-    with open("../backend/test.txt", "rb") as f:
+    with open("backend/test.txt", "rb") as f:
         trans = []
         while 1:
             try:

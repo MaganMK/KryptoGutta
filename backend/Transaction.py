@@ -13,6 +13,7 @@ class Transaction:
         self.totalPrice = float(self.quantity)*float(self.unit_price)
 
     def calculate_unit_price(self):
+
         timestamp = calendar.timegm(self.date.utctimetuple())
         req = requests.get("https://min-api.cryptocompare.com/data/pricehistorical" +
                            "?fsym=" + self.name + "&tsyms=NOK&ts=" + str(timestamp))

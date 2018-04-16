@@ -8,6 +8,7 @@ app = Flask(__name__)
 @app.route("/", methods=['GET','POST', 'OPTIONS'])
 def begin():
     data = request.data
+
     if(len(data) == 4):
         calculate(data)
     else:

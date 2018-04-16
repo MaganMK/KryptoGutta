@@ -5,7 +5,7 @@ import pickle
 class Bittrex:
 
     def __init__(self, data):
-        self.getTransactions(data)
+        self.trans = self.getTransactions(data)
 
     def getTransactions(self, data):
         #0 id = 8a9bf807 - f899 - 4c07 - 95b8 - 9d312ef1e192,\
@@ -33,7 +33,9 @@ class Bittrex:
                 transactions.append(sell_transaction)
                 transactions.append(buy_transaction)
 
-        self.writeResult(transactions)
+
+        #self.writeResult(transactions)
+        return transactions
 
     def create_date(self, date_string):
         try:
@@ -43,11 +45,6 @@ class Bittrex:
 
 
     def writeResult(self, trans):
-        with open("../backend/test.txt", "wb") as f:
+        with open("backend/test.txt", "wb") as f:
             for tx in trans:
                 pickle.dump(tx, f)
-
-
-
-
-
