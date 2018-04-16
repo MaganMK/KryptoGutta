@@ -3,10 +3,8 @@ from backend.Exchanges.Binance import *
 from backend.Exchanges.Coinbase import *
 
 def handleInput(data):
-    print(data)
     data = data.split("\n")
     exchange = data[0]
-    # print(data)
     e = None
     if exchange == "bittrex":
         e = Bittrex(data[2:])

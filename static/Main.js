@@ -76,7 +76,6 @@ function invokePython(event)
         {
             let content = e.target.result;
             content = "" + exchange + "\n" + content;
-            console.log(content);
                 $.ajax({
                     type: "POST",
                     data: content,
