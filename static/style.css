@@ -69,7 +69,6 @@ input[type="file"] {
 .box h5 {
     padding-top: 30px;
     text-align: center;
-
 }
 
 select {
@@ -80,10 +79,7 @@ select {
     text-indent: 140px;
     border-color: #cec83b;
     background-color: #fffcba;
-
 }
-
-
 
 select:hover {
     cursor: pointer;
@@ -99,7 +95,7 @@ footer {
     background-color: #f7f7f7;
     color: black;
     text-align: center;
-    min-height: 170px;
+    min-height: 210px;
     font-size: 14px;
 }
 
