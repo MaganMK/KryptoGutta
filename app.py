@@ -5,6 +5,7 @@ from backend.Input import handleInput
 import time
 
 
+
 app = Flask(__name__)
 app.secret_key = 'kryptogutta'
 

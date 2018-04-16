@@ -1,5 +1,6 @@
 from backend.Transaction import *
 from backend.Exchanges.Exchange import Exchange
+import time
 
 class Bittrex(Exchange):
 
@@ -14,6 +15,9 @@ class Bittrex(Exchange):
         #7 opened = 01 / 08 / 2018 08:35
         #8 closed = 01 / 08 / 2018 08:35
         transactions = []
+
+        start = time.time()
+        print("START: " + str(start))
         for line in data:
             if (len(line) > 0):
                 lines = line.split(",")
@@ -28,6 +32,8 @@ class Bittrex(Exchange):
                     buy_transaction = Transaction(currencies[1], lines[3], date, False, "bittrex")
                 transactions.append(sell_transaction)
                 transactions.append(buy_transaction)
+
+        print("TID: " + str(time.time() - start))
         return transactions
 
 

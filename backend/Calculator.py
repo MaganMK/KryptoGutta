@@ -38,7 +38,6 @@ def calculate_total(groups, year):
     unfilled = 0
     for currency in groups.keys():
         for current_sale in groups[currency]["sales"]:
-            print(current_sale)
             profit = 0
             for current_buy in groups[currency]["buys"]:
                 current_sale.quantity = float(current_sale.quantity)
