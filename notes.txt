@@ -1,5 +1,10 @@
-Praktisk om appen:
-- Kan verken garantere nøyaktighet eller at api'et henter korrekte priser
-
 Ting som må gjøres:
-- Ordne nettsiden
+- Midtstille dropdown
+- Ha lik footer på begge sider
+- donasjonadresse
+- mail
+- oppskrift på hvordan man henter csv
+- Logo + Favicon
+- Server
+- Domene
+- Spørre sjefen av kryptogruppa om lov til å poste
