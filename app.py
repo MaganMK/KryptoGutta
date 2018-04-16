@@ -21,6 +21,7 @@ def calculate_result():
     print("STARTER å kalkulere resultat: " + str(start))
 
     data = request.get_data()
+    data = data.decode("utf-8")
 
     global trans
     result = calculate(data, trans)
@@ -42,8 +43,9 @@ def new_input():
     data = data.decode("utf-8")
 
     global trans
-    trans = handleInput(data)
+    trans.extend(handleInput(data))
 
+    print(trans)
     print ("FERDIG å håndtere trans: " + str(time.time()) + "\nDet tok: " + str(time.time() - start))
 
     return ""

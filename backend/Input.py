@@ -5,12 +5,14 @@ from backend.Exchanges.Coinbase import *
 def handleInput(data):
     data = data.split("\n")
     exchange = data[0]
+    e = None
     if exchange == "bittrex":
-        Bittrex(data[2:])
+        e = Bittrex(data[2:])
     elif exchange == "binance":
-        Binance(data[2:])
+        e = Binance(data[2:])
     elif exchange == "coinbase":
-        Coinbase(data[6:])
+        e = Coinbase(data[6:])
+    return e.trans
     #Legger til flere exchanges her
 
 

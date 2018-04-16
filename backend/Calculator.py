@@ -5,36 +5,14 @@ import json
 from dateutil import parser
 
 
-def calculate(year):
-    transactions = read_file()
+def calculate(year, transactions):
     groups = group_transactions(transactions)
     groups = sort_on_date(groups)
 
     year_balance = get_total_balance(groups, year)
     filled, unfilled = calculate_total(groups, year)
     results = [filled, unfilled, year_balance]
-
-    write_to_result_file(results)
-
-
-def write_to_result_file(results):
-    writer = open("../results/result.txt", "w")
-    res_str = str(results[0]) + "," + str(results[1]) + "," + str(results[2])
-    writer.write(res_str)
-    writer.close()
-
-
-def read_file():
-    with open("../results/transactions.txt", "rb") as f:
-        trans = []
-        while 1:
-            try:
-                obj = pickle.load(f)
-                trans.append(obj)
-            except EOFError:
-                break
-    return trans
-
+    return results
 
 def group_transactions(transactions):
     groups = {}
@@ -60,6 +38,7 @@ def calculate_total(groups, year):
     unfilled = 0
     for currency in groups.keys():
         for current_sale in groups[currency]["sales"]:
+            print(current_sale)
             profit = 0
             for current_buy in groups[currency]["buys"]:
                 current_sale.quantity = float(current_sale.quantity)

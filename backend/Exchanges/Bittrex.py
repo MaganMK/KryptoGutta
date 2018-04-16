@@ -28,7 +28,7 @@ class Bittrex(Exchange):
                     buy_transaction = Transaction(currencies[1], lines[3], date, False, "bittrex")
                 transactions.append(sell_transaction)
                 transactions.append(buy_transaction)
-        self.write_result(transactions)
+        return transactions
 
 
     #def create_date(self, date_string):

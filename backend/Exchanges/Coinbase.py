@@ -39,7 +39,7 @@ class Coinbase(Exchange):
                     else:
                         buy_transaction = Transaction(currency, abs(float(lines[2])), date, False, "coinbase")
                         transactions.append(buy_transaction)
-        self.write_result(transactions)
+        return transactions
 
 
     def get_type(self, notes):

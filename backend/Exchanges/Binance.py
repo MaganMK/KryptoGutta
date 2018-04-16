@@ -27,7 +27,7 @@ class Binance(Exchange):
                     sell_transaction = Transaction(currencies[1], lines[5], date, True, "binance")
                 transactions.append(sell_transaction)
                 transactions.append(buy_transaction)
-        self.write_result(transactions)
+        return transactions
 
     def get_trading_pair(self, line):
         result = []
