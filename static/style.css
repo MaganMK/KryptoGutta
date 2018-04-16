@@ -84,6 +84,8 @@ select {
 
 }
 
+
+
 select:hover {
     cursor: pointer;
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.5);
@@ -91,14 +93,14 @@ select:hover {
 
 footer {
     margin-top: 100px;
-    position: relative;
+    position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -10;
     width: 100%;
     background-color: #f7f7f7;
     color: black;
     text-align: center;
-    height: 110px;
+    min-height: 170px;
     font-size: 14px;
 }
 
@@ -112,6 +114,7 @@ footer {
     margin-top: 40px;
     background-color: #c6e9ff;
     margin-bottom: 50px;
+    width: 60%;
 }
 
 th, td {
@@ -131,4 +134,10 @@ th, td {
     position: absolute;
     color: gray;
     bottom: 0px;
+}
+
+.about {
+    margin-top: 40px;
+    margin-left:20px;
+    margin-right: 20%;
 }
