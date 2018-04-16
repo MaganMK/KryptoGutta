@@ -64,6 +64,7 @@ input[type="file"] {
     width: 350px;
     height: 350px;
     border-radius: 15px;
+    position: relative;
 }
 
 .box h5 {
@@ -103,10 +104,31 @@ footer {
 
 #info {
     background-color: #c6e9ff;
-    height: 300px;
+    min-height: 300px;
     margin-bottom: 40px;
 }
 
 #info-wrapper {
     margin-top: 40px;
+    background-color: #c6e9ff;
+    margin-bottom: 50px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+#transaction-table {
+    width: fit-content;
+}
+
+#tx-count {
+    margin-top: 40px;
+}
+
+#explanation-text {
+    position: absolute;
+    color: gray;
+    bottom: 0px;
 }

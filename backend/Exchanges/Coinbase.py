@@ -34,10 +34,10 @@ class Coinbase(Exchange):
                     date = self.create_date(lines[0])
                     currency = lines[3]
                     if (type == "SELL"):
-                        sell_transaction = Transaction(currency, abs(float(lines[2])), date, True, "coinbase")
+                        sell_transaction = Transaction(currency, abs(float(lines[2])), date, True, "Coinbase")
                         transactions.append(sell_transaction)
                     else:
-                        buy_transaction = Transaction(currency, abs(float(lines[2])), date, False, "coinbase")
+                        buy_transaction = Transaction(currency, abs(float(lines[2])), date, False, "Coinbase")
                         transactions.append(buy_transaction)
         return transactions
 

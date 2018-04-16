@@ -1,4 +1,5 @@
-
+var txDiv = document.getElementById("tx-table-div");
+txDiv.style.display = "none";
 
 function startCalculation()
 {
@@ -46,7 +47,10 @@ function startCalculation()
 
 function invokePython(event)
 {
-     let exchange = event.target.id;
+    let exchange = event.target.id;
+    var fileInput = document.getElementById(exchange.substring(0,exchange.length-1));
+    fileInput.style.backgroundColor = "#c6e9ff";
+    fileInput.style.borderColor = "#79ccff";
     let file = document.getElementById(exchange);
     if(file.files.length)
     {
@@ -62,22 +66,27 @@ function invokePython(event)
                     data: content,
                     url: "/newInput",
                     success: function(transactions){
-                        console.log(transactions.trans);
-
-                        for(let tx in transactions.trans)
+                        txDiv.style.display = "block";
+                        let txCount = document.getElementById("tx-count");
+                        let count = transactions.trans.length;
+                        txCount.innerText = "Registrerte transaksjoner: " + count;
+                        let table = document.getElementById("transaction-table");
+                        for(let i in transactions.trans)
                         {
-                            var node = document.createElement("LI");
-                            let textNode = document.createTextNode(transactions.trans[tx]);
-                            node.appendChild(textNode);
-                            document.getElementById("transDiv").appendChild(node)
+                            let lines = transactions.trans[i].split(",");
+                            var row = table.insertRow(++i);
+                            for(let i = 0; i < lines.length; i++)
+                            {
+                                let cell = row.insertCell(i);
+                                cell.innerText = lines[i];
+                            }
                         }
+                        fileInput.style.backgroundColor = "#e0ffd8";
+                        fileInput.style.borderColor = "#008927";
                     }
-
                 });
         };
     }
-
-
 }
 
 
