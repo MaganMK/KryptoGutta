@@ -75,10 +75,17 @@ select {
     border-radius: 15px;
     width: 350px;
     height: 50px;
-    text-align: center;
-    text-indent: 140px;
+    text-align-last:center;
     border-color: #cec83b;
     background-color: #fffcba;
+}
+
+select, #submit-btn, .file-container {
+        transition-duration: 0.3s;
+}
+
+select * {
+    background-color: white;
 }
 
 select:hover {

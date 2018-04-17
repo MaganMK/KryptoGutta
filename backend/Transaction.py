@@ -13,8 +13,6 @@ class Transaction:
         self.total_price = float(self.quantity)*float(self.unit_price)
         self.site = site
 
-    #Fikser rebrands (ans) og kaller bcc for bch
-
     def calculate_unit_price(self):
         timestamp = calendar.timegm(self.date.utctimetuple())
         req = requests.get("https://min-api.cryptocompare.com/data/pricehistorical" +
@@ -27,10 +25,10 @@ class Transaction:
         qty = rounder(self.quantity)
         unit_p = rounder(self.unit_price)
         tot_p = rounder(self.total_price)
-        #return "Name: " + self.name + " " + sale + "  Qty: " + str(self.quantity) + "  Date: " + str(self.date) + "  Unit price: " + str(self.unit_price) + " Total price: " + str(self.total_price) + " exchange: " + self.site
         return self.name + "," + str(self.date) + "," + sale + "," + str(qty) + "," + str(unit_p) + "," + str(tot_p) + "," + self.site
 
 
+#Runder tall så det blir fint i tabell
 def rounder(number):
     if number < 0:
         return round(number,5)
@@ -39,7 +37,7 @@ def rounder(number):
     else:
         return int(number)
 
-
+#Fikser rebrands (ans) og kaller bcc for bch
 def fix_name(name):
     fixes = {"ANS": "NEO", "BCC": "BCH"}
     if name in fixes.keys():
