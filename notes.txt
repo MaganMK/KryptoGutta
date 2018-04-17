@@ -1,10 +1,7 @@
 Ting som må gjøres:
-- Midtstille dropdown
 - Ha lik footer på begge sider
 - donasjonadresse
 - mail
-- oppskrift på hvordan man henter csv CHECK
 - Logo + Favicon
 - Server
 - Domene
-- Spørre sjefen av kryptogruppa om lov til å poste CHECK
