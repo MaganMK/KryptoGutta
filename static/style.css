@@ -102,7 +102,7 @@ footer {
     background-color: #f7f7f7;
     color: black;
     text-align: center;
-    min-height: 210px;
+    min-height: 285px;
     font-size: 14px;
 }
 
@@ -142,4 +142,8 @@ th, td {
     margin-top: 40px;
     margin-left:20px;
     margin-right: 20%;
+}
+
+#file-info {
+    margin-bottom: 40px;
 }

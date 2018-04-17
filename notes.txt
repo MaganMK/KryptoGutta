@@ -3,5 +3,14 @@ Ting som må gjøres:
 - donasjonadresse
 - mail
 - Logo + Favicon
-- Server
+- Server -> heliohost
 - Domene
+
+domener:
+skattepus åpen
+chainedtax åpen
+dutyblock åpen
+coinedtax åpen
+tradedtax åpen
+skattebit åpen
+bitskatt åpen
