@@ -5,7 +5,8 @@ import json
 class Transaction:
 
     def __init__(self, name, quantity, date, is_sale, site):
-        self.name = fix_name(name)
+        #self.name = fix_name(name)
+        self.name = name
         self.quantity = float(quantity)
         self.is_sale = is_sale
         self.date = date

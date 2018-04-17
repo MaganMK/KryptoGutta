@@ -83,7 +83,7 @@ function invokePython(event)
                     success: function(transactions){
                         $("#transaction-table tr").remove();
                         let table = document.getElementById("transaction-table");
-                        let header = ["Valuta", "Dato", "Kjøp/Salg", "Kvantitet", "Enhetspris", "Totalpris", "Exchange"];
+                        let header = ["#", "Valuta", "Tidspunkt", "Kjøp/Salg", "Kvantitet", "Enhetspris", "Totalpris", "Exchange"];
                         let row1 = table.insertRow(0);
                         row1.style = "font-weight: bold;";
                         for (let i = 0; i < header.length; i++) {
@@ -96,14 +96,21 @@ function invokePython(event)
                         txCount.innerText = "Registrerte transaksjoner: " + count;
                         for(let i in transactions.trans)
                         {
+                            //lines[4] gir enhetspris
                             let lines = transactions.trans[i].split(",");
                             var row = table.insertRow(++i);
+                            if (lines[4] == 0) {
+                                row.className = "table-danger";
+                            }
                             for(let i = 0; i < lines.length; i++)
                             {
                                 let cell = row.insertCell(i);
                                 cell.innerText = lines[i];
                             }
+                            let cell = row.insertCell(0);
+                            cell.innerText = i;
                         }
+
                         fileInput.style.backgroundColor = "#e0ffd8";
                         fileInput.style.borderColor = "#008927";
                         document.body.style.cursor  = 'default';
