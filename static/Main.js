@@ -1,11 +1,25 @@
 var txDiv = document.getElementById("tx-table-div");
 txDiv.style.display = "none";
+var selector = document.getElementById("year-selector");
+var calcBtn = document.getElementById("submit-btn");
+calcBtn.disabled = true;
+
+selector.addEventListener("change", function() {
+    let val = selector.options[selector.selectedIndex].value;
+    let validYears = ["2015", "2016", "2017", "2018"];
+    if (validYears.indexOf(val) >= 0) {
+        selector.style.backgroundColor = "#c5ffc4";
+        selector.style.border = "solid #78d877";
+        calcBtn.style.backgroundColor = "#c5ffc4";
+        calcBtn.style.border = "solid #78d877";
+        calcBtn.disabled = false;
+    }
+})
 
 function startCalculation()
 {
-
-    var dropdown = document.getElementById("year-selector");
-    let year = dropdown.options[dropdown.selectedIndex].value;
+    document.body.style.cursor  = 'wait';
+    let year = selector.options[selector.selectedIndex].value;
 
    $.ajax({
         type: "POST",
@@ -40,6 +54,7 @@ function startCalculation()
             document.getElementById("filled").innerText = "\n\n\n" + res[0] + " kr";
             document.getElementById("unfilled").innerText = "\n\n\n" + res[1] + " kr";
             document.getElementById("balance").innerText = "\n\n\n" + res[2] + " kr";
+            document.body.style.cursor  = 'default';
         }
     });
 
@@ -51,6 +66,7 @@ function invokePython(event)
     var fileInput = document.getElementById(exchange.substring(0,exchange.length-1));
     fileInput.style.backgroundColor = "#c6e9ff";
     fileInput.style.borderColor = "#79ccff";
+    document.body.style.cursor  = 'wait';
     let file = document.getElementById(exchange);
     if(file.files.length)
     {
@@ -60,29 +76,44 @@ function invokePython(event)
         {
             let content = e.target.result;
             content = "" + exchange + "\n" + content;
-            console.log(content);
                 $.ajax({
                     type: "POST",
                     data: content,
                     url: "/newInput",
                     success: function(transactions){
+                        $("#transaction-table tr").remove();
+                        let table = document.getElementById("transaction-table");
+                        let header = ["#", "Valuta", "Tidspunkt", "Kjøp/Salg", "Kvantitet", "Enhetspris", "Totalpris", "Exchange"];
+                        let row1 = table.insertRow(0);
+                        row1.style = "font-weight: bold;";
+                        for (let i = 0; i < header.length; i++) {
+                            let cell = row1.insertCell(i);
+                            cell.innerText = header[i];
+                        }
                         txDiv.style.display = "block";
                         let txCount = document.getElementById("tx-count");
                         let count = transactions.trans.length;
                         txCount.innerText = "Registrerte transaksjoner: " + count;
-                        let table = document.getElementById("transaction-table");
                         for(let i in transactions.trans)
                         {
+                            //lines[4] gir enhetspris
                             let lines = transactions.trans[i].split(",");
                             var row = table.insertRow(++i);
+                            if (lines[4] == 0) {
+                                row.className = "table-danger";
+                            }
                             for(let i = 0; i < lines.length; i++)
                             {
                                 let cell = row.insertCell(i);
                                 cell.innerText = lines[i];
                             }
+                            let cell = row.insertCell(0);
+                            cell.innerText = i;
                         }
+
                         fileInput.style.backgroundColor = "#e0ffd8";
                         fileInput.style.borderColor = "#008927";
+                        document.body.style.cursor  = 'default';
                     }
                 });
         };

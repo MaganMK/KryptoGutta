@@ -3,6 +3,7 @@ import calendar
 import requests
 import json
 from dateutil import parser
+import copy
 
 
 def calculate(year, transactions):
@@ -33,12 +34,12 @@ def sort_on_date(groups):
     return groups
 
 
-def calculate_total(groups, year):
+def calculate_total(main_groups, year):
+    groups = copy.deepcopy(main_groups)
     filled = 0
     unfilled = 0
     for currency in groups.keys():
         for current_sale in groups[currency]["sales"]:
-            print(current_sale)
             profit = 0
             for current_buy in groups[currency]["buys"]:
                 current_sale.quantity = float(current_sale.quantity)

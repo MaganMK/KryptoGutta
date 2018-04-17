@@ -1,5 +1,7 @@
-Praktisk om appen:
-- Kan verken garantere nøyaktighet eller at api'et henter korrekte priser
-
 Ting som må gjøres:
-- Ordne nettsiden
+- Ha lik footer på begge sider
+- donasjonadresse
+- mail
+- Logo + Favicon
+- Server
+- Domene
