@@ -1,2 +1,2 @@
 # KryptoGutta
-Prøver å mekke litt greier da vettu
+Eksprimentering med mikro-rammeverket Flaks i python
