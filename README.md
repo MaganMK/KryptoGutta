@@ -1,2 +1,2 @@
 # KryptoGutta
-Eksprimentering med mikro-rammeverket Flaks i python
+Experimenting webdevelopment using the micro-framework Flaks in Python
